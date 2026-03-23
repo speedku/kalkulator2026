@@ -1,6 +1,6 @@
 import "server-only";
 import { prisma } from "@/lib/db";
-import { getCurrentUser } from "./auth";
+import { getCurrentUser, requireAdmin } from "./auth";
 
 // Matches the existing activity_log table enum structure
 type ActivityType =
@@ -59,4 +59,87 @@ export async function logActivity(params: LogActivityParams): Promise<void> {
       userAgent: params.userAgent,
     },
   });
+}
+
+export interface GetActivityLogParams {
+  activityType?: string;
+  userId?: number;
+  dateFrom?: Date;
+  dateTo?: Date;
+  page?: number;
+  perPage?: number;
+}
+
+export interface ActivityLogEntry {
+  id: number;
+  userId: number | null;
+  activityType: string;
+  action: string;
+  description: string;
+  entityType: string | null;
+  entityId: number | null;
+  entityName: string | null;
+  metadata: string | null;
+  ipAddress: string | null;
+  userAgent: string | null;
+  createdAt: Date;
+  user: { id: number; name: string | null; email: string } | null;
+}
+
+export interface GetActivityLogResult {
+  entries: ActivityLogEntry[];
+  total: number;
+  page: number;
+  perPage: number;
+}
+
+/**
+ * Get paginated activity log entries with filtering.
+ * Requires admin role.
+ */
+export async function getActivityLog(
+  params: GetActivityLogParams = {}
+): Promise<GetActivityLogResult> {
+  await requireAdmin();
+
+  const page = params.page ?? 1;
+  const perPage = params.perPage ?? 50;
+  const skip = (page - 1) * perPage;
+
+  const where: {
+    activityType?: string;
+    userId?: number;
+    createdAt?: { gte?: Date; lte?: Date };
+  } = {};
+
+  if (params.activityType) {
+    where.activityType = params.activityType;
+  }
+
+  if (params.userId) {
+    where.userId = params.userId;
+  }
+
+  if (params.dateFrom || params.dateTo) {
+    where.createdAt = {};
+    if (params.dateFrom) where.createdAt.gte = params.dateFrom;
+    if (params.dateTo) where.createdAt.lte = params.dateTo;
+  }
+
+  const [entries, total] = await Promise.all([
+    prisma.activityLog.findMany({
+      where,
+      include: {
+        user: {
+          select: { id: true, name: true, email: true },
+        },
+      },
+      orderBy: { createdAt: "desc" },
+      skip,
+      take: perPage,
+    }),
+    prisma.activityLog.count({ where }),
+  ]);
+
+  return { entries, total, page, perPage };
 }
