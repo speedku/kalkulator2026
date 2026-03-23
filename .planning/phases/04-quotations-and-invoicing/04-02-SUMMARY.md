@@ -167,6 +167,10 @@ None - no external service configuration required.
 - basePath PDF link pattern documented for future use (Route Handlers, file downloads)
 - getProductsForBuilder() available in products DAL for any future builder-type UI
 
+## Self-Check: PASSED
+
+All 13 key files found on disk. Task commits d53c2fe and 6bc964d verified in git log. npx tsc --noEmit passes with no errors.
+
 ---
 *Phase: 04-quotations-and-invoicing*
 *Completed: 2026-03-23*
