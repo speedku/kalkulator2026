@@ -115,6 +115,66 @@ export async function sendVerificationEmail(
   });
 }
 
+export async function sendContainerStatusEmail(opts: {
+  to: string;
+  containerNumber: string;
+  status: string;
+  etaDate: Date;
+  notificationType: string;
+}): Promise<void> {
+  const statusLabels: Record<string, string> = {
+    in_transit: "W transporcie",
+    at_port: "W porcie",
+    unloaded: "Rozładowany",
+    completed: "Zrealizowany",
+  };
+  const notificationLabels: Record<string, string> = {
+    eta_7days: "ETA za 7 dni",
+    eta_3days: "ETA za 3 dni",
+    eta_1day: "ETA jutro",
+    arrived: "Przybył",
+    delayed: "Opóźnienie",
+  };
+
+  const statusLabel = statusLabels[opts.status] ?? opts.status;
+  const notificationLabel = notificationLabels[opts.notificationType] ?? opts.notificationType;
+  const etaFormatted = opts.etaDate.toLocaleDateString("pl-PL", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  const bodyHtml = `
+    <h2 style="margin:0 0 16px;font-size:20px;font-weight:600;color:#f0f0ff;">
+      Kontener ${opts.containerNumber} — ${notificationLabel}
+    </h2>
+    <p style="margin:0 0 16px;color:#a0a0c0;line-height:1.6;">
+      Aktualizacja statusu kontenera <strong style="color:#f0f0ff;">${opts.containerNumber}</strong>.
+    </p>
+    <table style="width:100%;border-collapse:collapse;margin:0 0 24px;">
+      <tr>
+        <td style="padding:8px 0;color:#606080;font-size:13px;border-bottom:1px solid rgba(99,102,241,0.1);">Status</td>
+        <td style="padding:8px 0;color:#f0f0ff;font-size:13px;border-bottom:1px solid rgba(99,102,241,0.1);text-align:right;">${statusLabel}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px 0;color:#606080;font-size:13px;">ETA</td>
+        <td style="padding:8px 0;color:#f0f0ff;font-size:13px;text-align:right;">${etaFormatted}</td>
+      </tr>
+    </table>
+    <p style="margin:0;color:#606080;font-size:13px;">
+      W razie pytań prosimy o kontakt — zespół ALLBAG.
+    </p>
+  `;
+
+  const transport = createTransport();
+  await transport.sendMail({
+    from: FROM_ADDRESS,
+    to: opts.to,
+    subject: `Kontener ${opts.containerNumber} — ${notificationLabel} — ALLBAG`,
+    html: emailTemplate(`Kontener ${opts.containerNumber}`, bodyHtml),
+  });
+}
+
 export async function sendQuotationEmail(opts: {
   to: string;
   quotationNumber: string;
