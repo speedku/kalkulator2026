@@ -42,6 +42,9 @@ model User {
   containersUpdated         Container[]             @relation("ContainerUpdatedBy")
   containerDocsUploaded     ContainerDocument[]     @relation("ContainerDocUploader")
   domesticDeliveriesCreated DomesticDelivery[]      @relation("DomDeliveryCreatedBy")
+  // Phase 6 relations
+  notificationsSent         Notification[]          @relation("NotificationSender")
+  notificationReads         NotificationRead[]
 
   @@map("users")
 }
@@ -517,4 +520,65 @@ model DomesticDeliveryDocument {
 
   @@index([deliveryId])
   @@map("domestic_delivery_documents")
+}
+
+// Phase 6: Dashboard & Analytics models
+
+model Notification {
+  id          Int       @id @default(autoincrement())
+  senderId    Int       @map("sender_id")
+  title       String    @db.VarChar(255)
+  message     String    @db.Text
+  type        String    @default("system")
+  targetType  String    @default("all") @map("target_type")
+  priority    String    @default("normal")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  expiresAt   DateTime? @map("expires_at")
+
+  sender     User                    @relation("NotificationSender", fields: [senderId], references: [id], onDelete: Cascade)
+  reads      NotificationRead[]
+  recipients NotificationRecipient[]
+
+  @@index([type])
+  @@index([createdAt])
+  @@map("notifications")
+}
+
+model NotificationRead {
+  id             Int      @id @default(autoincrement())
+  notificationId Int      @map("notification_id")
+  userId         Int      @map("user_id")
+  readAt         DateTime @default(now()) @map("read_at")
+  isDismissed    Boolean  @default(false) @map("is_dismissed")
+
+  notification   Notification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([notificationId, userId])
+  @@index([userId])
+  @@map("notification_reads")
+}
+
+model NotificationRecipient {
+  id             Int  @id @default(autoincrement())
+  notificationId Int  @map("notification_id")
+  userId         Int  @map("user_id")
+
+  notification   Notification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+
+  @@index([notificationId])
+  @@map("notification_recipients")
+}
+
+model PackerLiveStat {
+  id            Int      @id @default(autoincrement())
+  recordedAt    DateTime @map("recorded_at")
+  totalPackages Int      @map("total_packages")
+  totalItems    Int      @map("total_items")
+  packerCount   Int      @map("packer_count")
+  source        String   @default("ssrs") @db.VarChar(20)
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@index([recordedAt])
+  @@map("packer_live_stats")
 }
