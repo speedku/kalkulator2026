@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Jeden zunifikowany system obsługujący cały cykl biznesowy ALLBAG -- z nowoczesnym Aether UI, szybki i przyjemny w codziennym użyciu
-**Current focus:** Phase 5: Containers & Deliveries — Plan 02 complete (container UI: list page, create form, detail page with ETA countdown, items editor, documents, Chinese labels, notify dialog)
+**Current focus:** Phase 5: Containers & Deliveries — COMPLETE (all 3 plans done: data layer, container UI, deliveries UI + calendar + Subiekt sync)
 
 ## Current Position
 
-Phase: 5 of 9 (Containers & Deliveries)
-Plan: 2 of 3 in current phase (05-02 complete — Wave 2 container UI done)
-Status: In Progress
-Last activity: 2026-03-23 - Completed plan 05-02: Container UI (12 files: list/create/detail pages, items editor, documents upload, Chinese thermal labels, ETA countdown, notify dialog)
+Phase: 5 of 9 (Containers & Deliveries) — COMPLETE
+Plan: 3 of 3 in current phase (05-03 complete — deliveries UI + calendar + Subiekt sync)
+Status: Phase Complete — ready for Phase 6
+Last activity: 2026-03-23 - Completed plan 05-03: Deliveries UI + Calendar (15 files: analytics panel, deliveries list/create/detail, unified calendar, Subiekt sync)
 
-Progress: [█████████████] 54% (Phase 5 Plan 2 of 9 complete — 12/22 plans done)
+Progress: [███████████████] 59% (Phase 5 Plan 3 of 9 complete — 13/22 plans done)
 
 ## Performance Metrics
 
@@ -31,7 +31,7 @@ Progress: [█████████████] 54% (Phase 5 Plan 2 of 9 com
 | 02-product-management | 3/3 | 32 min | 11 min |
 | 03-pricing-engine | 2/2 | 18 min | 9 min |
 | 04-quotations-and-invoicing | 3/3 | 20 min | 7 min |
-| 05-containers-and-deliveries | 2/3 | 13 min | 6.5 min |
+| 05-containers-and-deliveries | 3/3 | 20 min | 6.7 min |
 
 **Recent Trend:**
 - Last 5 plans: 8 min, 13 min, 22 min, 3 min, 15 min
@@ -92,6 +92,9 @@ Recent decisions affecting current work:
 - [Phase 05-02]: Container create form has no items section — items added post-creation on detail page (cleaner UX, avoids complex nested form state)
 - [Phase 05-02]: useEtaCountdown inline in container-detail.tsx as local function — single-use hook, no reuse needed
 - [Phase 05-02]: Upload route returns documentType+originalFilename+storedFilename so client can pass to addContainerDocumentAction directly without reparsing
+- [Phase 05-03]: date-fns was missing from node_modules despite package.json listing — installed explicitly; buildCalendarGrid uses weekStartsOn:1 (Monday)
+- [Phase 05-03]: SubiektSyncBtn uses toast.info for discovered=true errors — admin sees it as configuration step, not failure
+- [Phase 05-03]: Delivery status pipeline excludes "cancelled" from progress steps; cancel is a separate red button for non-terminal states
 
 ### Pending Todos
 
@@ -116,5 +119,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 05-containers-and-deliveries/05-02-PLAN.md (Phase 5 Wave 2 container UI — 12 files, list/create/detail pages, ETA countdown, labels, documents)
+Stopped at: Completed 05-containers-and-deliveries/05-03-PLAN.md (Phase 5 complete — deliveries UI, delivery calendar, Subiekt sync; 15 files)
 Resume file: None
