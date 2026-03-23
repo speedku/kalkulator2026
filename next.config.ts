@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   basePath: "/kalkulator2026",
   output: "standalone",
   reactStrictMode: true,
-  serverExternalPackages: ["bcryptjs"],
+  serverExternalPackages: ["bcryptjs", "mssql"],
   images: {
     remotePatterns: [
       {
