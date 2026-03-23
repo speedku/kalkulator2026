@@ -36,12 +36,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   5. System logs all user activity and admin can view the audit log in the admin panel
   6. User can use the notepad feature from the sidebar
   7. The application loads at /kalkulator2026 via Apache ProxyPass with Aether dark theme (glassmorphism, neon accents, correct fonts) applied consistently across all pages
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
-- [ ] 01-03: TBD
+- [ ] 01-01-PLAN.md — Next.js 15 scaffold, Prisma schema, Auth.js v5 split config, Aether theme tokens, deployment config
+- [ ] 01-02-PLAN.md — Auth pages (login, register, forgot/reset password), app shell (sidebar + topbar), RBAC navigation
+- [ ] 01-03-PLAN.md — Admin panels (users, permissions, access codes, audit log), notepad feature
 
 ### Phase 2: Product Management
 **Goal**: Users can browse, search, and filter the full product catalog; admins can manage products through CRUD, bulk operations, Excel import, and Subiekt GT synchronization
@@ -186,7 +186,7 @@ Phases execute in numeric order: 1 > 2 > 3 > 4 > 5 > 6 > 7 > 8 > 9
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation, Auth & System Shell | 0/3 | Not started | - |
+| 1. Foundation, Auth & System Shell | 0/3 | Planned | - |
 | 2. Product Management | 0/2 | Not started | - |
 | 3. Pricing Engine | 0/2 | Not started | - |
 | 4. Quotations & Invoicing | 0/3 | Not started | - |
