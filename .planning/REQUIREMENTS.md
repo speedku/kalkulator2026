@@ -16,9 +16,9 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 - [x] **AUTH-03**: Użytkownik może zresetować hasło przez link w emailu
 - [x] **AUTH-04**: Sesja użytkownika przetrwa odświeżenie przeglądarki (JWT)
 - [x] **AUTH-05**: Admin widzi panel admina, użytkownik widzi panel użytkownika (RBAC)
-- [ ] **AUTH-06**: Admin może zarządzać uprawnieniami do poszczególnych stron
+- [x] **AUTH-06**: Admin może zarządzać uprawnieniami do poszczególnych stron
 - [x] **AUTH-07**: Po 5 nieudanych próbach logowania konto jest blokowane na 15 min
-- [ ] **AUTH-08**: Admin może tworzyć i zarządzać kodami dostępu do rejestracji
+- [x] **AUTH-08**: Admin może tworzyć i zarządzać kodami dostępu do rejestracji
 
 ### Products (PROD)
 
@@ -143,10 +143,10 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 
 ### System Management (SYST)
 
-- [ ] **SYST-01**: Admin może zarządzać użytkownikami (CRUD, role, uprawnienia)
+- [x] **SYST-01**: Admin może zarządzać użytkownikami (CRUD, role, uprawnienia)
 - [x] **SYST-02**: System loguje wszystkie aktywności użytkowników (audit log)
-- [ ] **SYST-03**: Admin widzi log aktywności w panelu administracyjnym
-- [ ] **SYST-04**: System obsługuje notatnik (notepad) dla użytkownika
+- [x] **SYST-03**: Admin widzi log aktywności w panelu administracyjnym
+- [x] **SYST-04**: System obsługuje notatnik (notepad) dla użytkownika
 
 ---
 
@@ -192,13 +192,13 @@ Odroczone -- nie w bieżącej roadmapie.
 | AUTH-03 | Phase 1: Foundation, Auth & System Shell | Complete |
 | AUTH-04 | Phase 1: Foundation, Auth & System Shell | Complete |
 | AUTH-05 | Phase 1: Foundation, Auth & System Shell | Complete |
-| AUTH-06 | Phase 1: Foundation, Auth & System Shell | Pending |
+| AUTH-06 | Phase 1: Foundation, Auth & System Shell | Complete |
 | AUTH-07 | Phase 1: Foundation, Auth & System Shell | Complete |
-| AUTH-08 | Phase 1: Foundation, Auth & System Shell | Pending |
-| SYST-01 | Phase 1: Foundation, Auth & System Shell | Pending |
+| AUTH-08 | Phase 1: Foundation, Auth & System Shell | Complete |
+| SYST-01 | Phase 1: Foundation, Auth & System Shell | Complete |
 | SYST-02 | Phase 1: Foundation, Auth & System Shell | Complete |
-| SYST-03 | Phase 1: Foundation, Auth & System Shell | Pending |
-| SYST-04 | Phase 1: Foundation, Auth & System Shell | Pending |
+| SYST-03 | Phase 1: Foundation, Auth & System Shell | Complete |
+| SYST-04 | Phase 1: Foundation, Auth & System Shell | Complete |
 | PROD-01 | Phase 2: Product Management | Pending |
 | PROD-02 | Phase 2: Product Management | Pending |
 | PROD-03 | Phase 2: Product Management | Pending |
