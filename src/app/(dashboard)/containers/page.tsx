@@ -1,13 +1,17 @@
 import { requireAdmin } from "@/lib/dal/auth";
-import { getContainers } from "@/lib/dal/containers";
+import { getContainers, getContainerAnalytics } from "@/lib/dal/containers";
 import { ContainersTable } from "./_components/containers-table";
+import { ContainerAnalyticsPanel } from "./_components/container-analytics";
 import { GlassCard } from "@/components/aether/glass-card";
 import { PageHeader } from "@/components/aether/page-header";
 import Link from "next/link";
 
 export default async function ContainersPage() {
   await requireAdmin();
-  const containers = await getContainers();
+  const [containers, analytics] = await Promise.all([
+    getContainers(),
+    getContainerAnalytics(),
+  ]);
 
   return (
     <div className="space-y-6">
@@ -23,6 +27,9 @@ export default async function ContainersPage() {
           </Link>
         }
       />
+
+      <ContainerAnalyticsPanel analytics={analytics} />
+
       <GlassCard>
         <div className="px-6 py-6">
           <ContainersTable containers={containers} />

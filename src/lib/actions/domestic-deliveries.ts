@@ -5,6 +5,7 @@ import {
   createDomesticDelivery,
   updateDomesticDeliveryStatus,
 } from "@/lib/dal/domestic-deliveries";
+import { syncDeliveriesFromSubiekt } from "@/lib/dal/subiekt";
 import {
   DomesticDeliverySchema,
   DomesticDeliveryStatusSchema,
@@ -58,5 +59,22 @@ export async function updateDomesticDeliveryStatusAction(
     return { success: "Status dostawy zaktualizowany" };
   } catch {
     return { error: "Błąd aktualizacji statusu dostawy" };
+  }
+}
+
+export async function syncDeliveriesAction(): Promise<
+  ActionState & { discovered?: boolean }
+> {
+  try {
+    const result = await syncDeliveriesFromSubiekt();
+    if (result.synced > 0) {
+      return { success: `Zsynchronizowano ${result.synced} dostaw z Subiekt GT` };
+    }
+    if (result.errors.length > 0) {
+      return { error: result.errors[0], discovered: result.discovered };
+    }
+    return { success: "Synchronizacja zakończona — brak nowych dostaw" };
+  } catch (e) {
+    return { error: "Błąd synchronizacji z Subiekt GT: " + String(e) };
   }
 }

@@ -77,3 +77,91 @@ export async function syncProductsFromSubiekt(): Promise<{
   }
   return { synced, updated, errors };
 }
+
+// Discovery-first sync for domestic deliveries from Subiekt GT
+// Queries information_schema for dok% tables, then attempts sync if dok__Dokument exists
+export async function syncDeliveriesFromSubiekt(): Promise<{
+  synced: number;
+  errors: string[];
+  discovered: boolean;
+}> {
+  await requireAdmin();
+
+  // Step 1: Connect
+  let pool: sql.ConnectionPool;
+  try {
+    pool = await getSubiektConnection();
+  } catch (e) {
+    return {
+      synced: 0,
+      errors: ["Nie można połączyć się z Subiekt GT: " + String(e)],
+      discovered: false,
+    };
+  }
+
+  // Step 2: Schema discovery — find delivery-related tables
+  const discovery = await pool.request().query(`
+    SELECT TABLE_NAME, COLUMN_NAME
+    FROM information_schema.COLUMNS
+    WHERE TABLE_SCHEMA = DB_NAME()
+      AND TABLE_NAME LIKE 'dok%'
+    ORDER BY TABLE_NAME, ORDINAL_POSITION
+  `);
+
+  const tableNames: string[] = [
+    ...new Set(
+      (discovery.recordset as Array<{ TABLE_NAME: string }>).map(
+        (r) => r.TABLE_NAME
+      )
+    ),
+  ];
+
+  if (tableNames.length === 0) {
+    return {
+      synced: 0,
+      errors: [
+        "Brak tabel dok% w bazie Subiekt GT — synchronizacja dostaw niedostępna",
+      ],
+      discovered: false,
+    };
+  }
+
+  // Log discovered tables for debugging
+  console.log("[subiekt] Discovered delivery tables:", tableNames.join(", "));
+
+  // Step 3: Check if primary delivery table exists
+  if (!tableNames.includes("dok__Dokument")) {
+    return {
+      synced: 0,
+      errors: [
+        `Znalezione tabele dok%: ${tableNames.join(", ")}. ` +
+          "Tabela dok__Dokument nie istnieje — nie można zsynchronizować dostaw. " +
+          "Skontaktuj się z administratorem w celu skonfigurowania synchronizacji.",
+      ],
+      discovered: true,
+    };
+  }
+
+  // Step 4: Check available columns in dok__Dokument
+  const columns = (
+    discovery.recordset as Array<{ TABLE_NAME: string; COLUMN_NAME: string }>
+  )
+    .filter((r) => r.TABLE_NAME === "dok__Dokument")
+    .map((r) => r.COLUMN_NAME);
+
+  console.log("[subiekt] dok__Dokument columns:", columns.join(", "));
+
+  // Without confirmed column mappings, return discovery result for manual review
+  // DELV-04 is LOW confidence — stub with discovery info until column mapping is confirmed
+  return {
+    synced: 0,
+    errors: [
+      `Tabela dok__Dokument znaleziona (${columns.length} kolumn). ` +
+        "Automatyczna synchronizacja dostaw wymaga ręcznej konfiguracji mapowania kolumn. " +
+        `Dostępne kolumny: ${columns.slice(0, 10).join(", ")}${
+          columns.length > 10 ? "..." : ""
+        }`,
+    ],
+    discovered: true,
+  };
+}
