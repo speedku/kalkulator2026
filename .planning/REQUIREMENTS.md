@@ -40,12 +40,12 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 
 ### Quotations (QUOT)
 
-- [ ] **QUOT-01**: Użytkownik może tworzyć wyceny z produktami i cenami z cennika
-- [ ] **QUOT-02**: Wyceny mają unikalną numerację WYC-YYYY-#####
+- [x] **QUOT-01**: Użytkownik może tworzyć wyceny z produktami i cenami z cennika
+- [x] **QUOT-02**: Wyceny mają unikalną numerację WYC-YYYY-#####
 - [ ] **QUOT-03**: Użytkownik może eksportować wycenę do PDF
-- [ ] **QUOT-04**: Użytkownik może wysłać wycenę emailem do klienta
-- [ ] **QUOT-05**: Użytkownik może przeglądać historię wycen z filtrowaniem
-- [ ] **QUOT-06**: Użytkownik może duplikować istniejącą wycenę
+- [x] **QUOT-04**: Użytkownik może wysłać wycenę emailem do klienta
+- [x] **QUOT-05**: Użytkownik może przeglądać historię wycen z filtrowaniem
+- [x] **QUOT-06**: Użytkownik może duplikować istniejącą wycenę
 
 ### Containers / China Import (CONT)
 
@@ -85,9 +85,9 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 
 ### Invoicing (FACT)
 
-- [ ] **FACT-01**: Admin może tworzyć faktury VAT
-- [ ] **FACT-05**: Admin może eksportować faktury do PDF
-- [ ] **FACT-06**: Admin może przeglądać historię faktur z filtrowaniem
+- [x] **FACT-01**: Admin może tworzyć faktury VAT
+- [x] **FACT-05**: Admin może eksportować faktury do PDF
+- [x] **FACT-06**: Admin może przeglądać historię faktur z filtrowaniem
 - [ ] **FACT-07**: System obsługuje etykiety (label printing) dla zamówień
 
 ### Windykacja / AR (WIND)
@@ -211,15 +211,15 @@ Odroczone -- nie w bieżącej roadmapie.
 | PRICE-03 | Phase 3: Pricing Engine | Complete |
 | PRICE-04 | Phase 3: Pricing Engine | Complete |
 | PRICE-05 | Phase 3: Pricing Engine | Complete |
-| QUOT-01 | Phase 4: Quotations & Invoicing | Pending |
-| QUOT-02 | Phase 4: Quotations & Invoicing | Pending |
+| QUOT-01 | Phase 4: Quotations & Invoicing | Complete |
+| QUOT-02 | Phase 4: Quotations & Invoicing | Complete |
 | QUOT-03 | Phase 4: Quotations & Invoicing | Pending |
-| QUOT-04 | Phase 4: Quotations & Invoicing | Pending |
-| QUOT-05 | Phase 4: Quotations & Invoicing | Pending |
-| QUOT-06 | Phase 4: Quotations & Invoicing | Pending |
-| FACT-01 | Phase 4: Quotations & Invoicing | Pending |
-| FACT-05 | Phase 4: Quotations & Invoicing | Pending |
-| FACT-06 | Phase 4: Quotations & Invoicing | Pending |
+| QUOT-04 | Phase 4: Quotations & Invoicing | Complete |
+| QUOT-05 | Phase 4: Quotations & Invoicing | Complete |
+| QUOT-06 | Phase 4: Quotations & Invoicing | Complete |
+| FACT-01 | Phase 4: Quotations & Invoicing | Complete |
+| FACT-05 | Phase 4: Quotations & Invoicing | Complete |
+| FACT-06 | Phase 4: Quotations & Invoicing | Complete |
 | FACT-07 | Phase 4: Quotations & Invoicing | Pending |
 | CONT-01 | Phase 5: Containers & Deliveries | Pending |
 | CONT-02 | Phase 5: Containers & Deliveries | Pending |

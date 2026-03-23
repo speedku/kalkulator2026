@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Jeden zunifikowany system obsługujący cały cykl biznesowy ALLBAG -- z nowoczesnym Aether UI, szybki i przyjemny w codziennym użyciu
-**Current focus:** Phase 3: Pricing Engine — Plans 01 and 02 complete (full pricing engine: data layer + UI)
+**Current focus:** Phase 4: Quotations & Invoicing — Plan 01 complete (data layer: Prisma models, DAL, Actions, email)
 
 ## Current Position
 
-Phase: 3 of 9 (Pricing Engine)
-Plan: 2 of 2 in current phase (03-01 complete, 03-02 complete)
-Status: Phase 3 Complete
-Last activity: 2026-03-23 - Completed plan 03-02: Pricing Engine UI (admin list/create/detail pages, MarginMatrixEditor, CloneDialog, /price-lists/my, PriceListAssignment)
+Phase: 4 of 9 (Quotations & Invoicing)
+Plan: 1 of 3 in current phase (04-01 complete)
+Status: In Progress
+Last activity: 2026-03-23 - Completed plan 04-01: Quotations & Invoicing data layer (Prisma models, DAL, Server Actions, email extension, @react-pdf/renderer)
 
-Progress: [████████░░] 33%
+Progress: [█████████░] 37%
 
 ## Performance Metrics
 
@@ -30,6 +30,7 @@ Progress: [████████░░] 33%
 | 01-foundation-auth-and-system-shell | 3/3 | 34 min | 11 min |
 | 02-product-management | 3/3 | 32 min | 11 min |
 | 03-pricing-engine | 2/2 | 18 min | 9 min |
+| 04-quotations-and-invoicing | 1/3 | 5 min | 5 min |
 
 **Recent Trend:**
 - Last 5 plans: 8 min, 13 min, 22 min, 3 min, 15 min
@@ -74,6 +75,9 @@ Recent decisions affecting current work:
 - [Phase 03-02]: State-toggled modal preferred over Base UI Dialog for one-off modals (simpler, same visual result)
 - [Phase 03-02]: PriceListAssignment at settings/users/[id] — actual user admin route is settings/, not admin/
 - [Phase 03-02]: getUserById DAL must include priceListId in select for assignment component to receive current value
+- [Phase 04-01]: WYC/FAK atomic numbering: INSERT PENDING → get AUTO_INCREMENT id → compute number → UPDATE in same $transaction (replaces unsafe COUNT(*)+1 from kalkulator2025)
+- [Phase 04-01]: 04-DB-MIGRATION.sql creates only invoices tables (quotations/quotation_items already in production MySQL)
+- [Phase 04-01]: QuotationPdfTemplate placeholder in src/lib/pdf/ unblocks TypeScript — full impl deferred to Plan 04-02
 
 ### Pending Todos
 
@@ -98,5 +102,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 03-pricing-engine/03-02-PLAN.md (Phase 3 Plan 02 complete — Phase 3 done)
+Stopped at: Completed 04-quotations-and-invoicing/04-01-PLAN.md (Phase 4 Plan 01 complete — data layer done)
 Resume file: None
