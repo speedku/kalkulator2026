@@ -37,6 +37,11 @@ model User {
   priceList          PriceList?               @relation(fields: [priceListId], references: [id])
   quotations         Quotation[]
   invoices           Invoice[]
+  // Phase 5 relations
+  containersCreated         Container[]             @relation("ContainerCreatedBy")
+  containersUpdated         Container[]             @relation("ContainerUpdatedBy")
+  containerDocsUploaded     ContainerDocument[]     @relation("ContainerDocUploader")
+  domesticDeliveriesCreated DomesticDelivery[]      @relation("DomDeliveryCreatedBy")
 
   @@map("users")
 }
@@ -240,6 +245,7 @@ model Product {
   category       ProductCategory? @relation(fields: [categoryId], references: [id])
   group          ProductGroup?    @relation(fields: [productGroupId], references: [id])
   variants       ProductVariant[]
+  containerItems ContainerItem[]
 
   @@map("products")
 }
@@ -258,6 +264,7 @@ model ProductVariant {
   updatedAt         DateTime       @updatedAt @map("updated_at")
   product           Product        @relation(fields: [productId], references: [id], onDelete: Cascade)
   prices            ProductPrice[]
+  containerItems    ContainerItem[]
 
   @@map("product_variants")
 }
@@ -385,4 +392,129 @@ model InvoiceItem {
   invoice     Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
 
   @@map("invoice_items")
+}
+
+// Phase 5: Containers & Deliveries models
+
+model Container {
+  id                  Int                     @id @default(autoincrement())
+  containerNumber     String                  @unique @map("container_number") @db.VarChar(20)
+  carrier             String                  @db.VarChar(100)
+  portOfOrigin        String                  @map("port_of_origin") @db.VarChar(100)
+  portOfDestination   String                  @map("port_of_destination") @db.VarChar(100)
+  shipmentDate        DateTime                @map("shipment_date") @db.Date
+  etaDate             DateTime                @map("eta_date") @db.Date
+  actualArrivalDate   DateTime?               @map("actual_arrival_date") @db.Date
+  status              String                  @default("in_transit")
+  totalValue          Decimal?                @map("total_value") @db.Decimal(12, 2)
+  notes               String?                 @db.Text
+  createdBy           Int?                    @map("created_by")
+  updatedBy           Int?                    @map("updated_by")
+  createdAt           DateTime                @default(now()) @map("created_at")
+  updatedAt           DateTime                @updatedAt @map("updated_at")
+
+  items               ContainerItem[]
+  documents           ContainerDocument[]
+  notifications       ContainerNotification[]
+  creator             User?                   @relation("ContainerCreatedBy", fields: [createdBy], references: [id], onDelete: SetNull)
+  updater             User?                   @relation("ContainerUpdatedBy", fields: [updatedBy], references: [id], onDelete: SetNull)
+
+  @@index([status])
+  @@index([etaDate])
+  @@map("containers")
+}
+
+model ContainerItem {
+  id          Int             @id @default(autoincrement())
+  containerId Int             @map("container_id")
+  productId   Int             @map("product_id")
+  variantId   Int?            @map("variant_id")
+  quantity    Int
+  unitPrice   Decimal         @map("unit_price") @db.Decimal(10, 2)
+  notes       String?         @db.Text
+  createdAt   DateTime        @default(now()) @map("created_at")
+
+  container   Container       @relation(fields: [containerId], references: [id], onDelete: Cascade)
+  product     Product         @relation(fields: [productId], references: [id], onDelete: Restrict)
+  variant     ProductVariant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+
+  @@index([containerId])
+  @@index([productId])
+  @@map("container_items")
+}
+
+model ContainerDocument {
+  id               Int       @id @default(autoincrement())
+  containerId      Int       @map("container_id")
+  documentType     String    @map("document_type") @db.VarChar(50)
+  originalFilename String    @map("original_filename") @db.VarChar(255)
+  storedFilename   String    @map("stored_filename") @db.VarChar(255)
+  filePath         String    @map("file_path") @db.VarChar(500)
+  fileSize         Int?      @map("file_size")
+  mimeType         String?   @map("mime_type") @db.VarChar(100)
+  uploadedBy       Int?      @map("uploaded_by")
+  uploadedAt       DateTime  @default(now()) @map("uploaded_at")
+
+  container        Container @relation(fields: [containerId], references: [id], onDelete: Cascade)
+  uploader         User?     @relation("ContainerDocUploader", fields: [uploadedBy], references: [id], onDelete: SetNull)
+
+  @@index([containerId])
+  @@map("container_documents")
+}
+
+model ContainerNotification {
+  id               Int       @id @default(autoincrement())
+  containerId      Int       @map("container_id")
+  notificationType String    @map("notification_type") @db.VarChar(30)
+  recipientEmail   String    @map("recipient_email") @db.VarChar(255)
+  subject          String?   @db.VarChar(255)
+  body             String?   @db.Text
+  sentAt           DateTime  @default(now()) @map("sent_at")
+  status           String    @default("pending") @db.VarChar(20)
+  errorMessage     String?   @map("error_message") @db.Text
+
+  container        Container @relation(fields: [containerId], references: [id], onDelete: Cascade)
+
+  @@index([containerId])
+  @@map("container_notifications")
+}
+
+model DomesticDelivery {
+  id                Int                        @id @default(autoincrement())
+  name              String                     @db.VarChar(255)
+  description       String?                    @db.Text
+  supplier          String                     @db.VarChar(255)
+  etaDate           DateTime                   @map("eta_date") @db.Date
+  actualArrivalDate DateTime?                  @map("actual_arrival_date") @db.Date
+  status            String                     @default("pending")
+  notes             String?                    @db.Text
+  createdBy         Int?                       @map("created_by")
+  updatedBy         Int?                       @map("updated_by")
+  createdAt         DateTime                   @default(now()) @map("created_at")
+  updatedAt         DateTime                   @updatedAt @map("updated_at")
+
+  documents         DomesticDeliveryDocument[]
+  creator           User?                      @relation("DomDeliveryCreatedBy", fields: [createdBy], references: [id], onDelete: SetNull)
+
+  @@index([status])
+  @@index([etaDate])
+  @@map("domestic_deliveries")
+}
+
+model DomesticDeliveryDocument {
+  id               Int              @id @default(autoincrement())
+  deliveryId       Int              @map("delivery_id")
+  documentType     String           @map("document_type") @db.VarChar(50)
+  originalFilename String           @map("original_filename") @db.VarChar(255)
+  storedFilename   String           @map("stored_filename") @db.VarChar(255)
+  filePath         String           @map("file_path") @db.VarChar(500)
+  fileSize         Int?             @map("file_size")
+  mimeType         String?          @map("mime_type") @db.VarChar(100)
+  uploadedBy       Int?             @map("uploaded_by")
+  uploadedAt       DateTime         @default(now()) @map("uploaded_at")
+
+  delivery         DomesticDelivery @relation(fields: [deliveryId], references: [id], onDelete: Cascade)
+
+  @@index([deliveryId])
+  @@map("domestic_delivery_documents")
 }
