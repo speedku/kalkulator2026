@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Jeden zunifikowany system obsługujący cały cykl biznesowy ALLBAG -- z nowoczesnym Aether UI, szybki i przyjemny w codziennym użyciu
-**Current focus:** Phase 7: CRM & Accounts Receivable — Plan 1 complete (data layer: 6 Prisma models, DAL, Server Actions, Zod schemas, email, navigation)
+**Current focus:** Phase 7: CRM & Accounts Receivable — Plan 2 complete (CRM UI: 16 files across customer list/create/edit/detail, leads management, pipeline board, brand protection watchlist)
 
 ## Current Position
 
 Phase: 7 of 9 (CRM & Accounts Receivable) — In Progress
-Plan: 1 of 3 in current phase (07-01 complete — DB migration SQL + DAL + Server Actions + Zod schemas + email + navigation)
-Status: Plan 07-01 complete — ready for Plan 07-02 (CRM UI)
-Last activity: 2026-03-23 - Completed plan 07-01: CRM & Windykacja data layer (10 files: 6 Prisma models, 2 DAL files, 2 actions files, 2 validations files, email extension, navigation update)
+Plan: 2 of 3 in current phase (07-02 complete — CRM UI: customer list/create/edit/detail, leads, pipeline, brand protection)
+Status: Plan 07-02 complete — ready for Plan 07-03 (Windykacja UI + B2B portal)
+Last activity: 2026-03-23 - Completed plan 07-02: CRM UI (16 files: customer list/create/edit/detail, leads management, pipeline board, brand protection watchlist)
 
-Progress: [███████████████████] 77% (Phase 7 Plan 1 of 9 — 17/22 plans done)
+Progress: [████████████████████] 81% (Phase 7 Plan 2 of 9 — 18/22 plans done)
 
 ## Performance Metrics
 
@@ -33,7 +33,7 @@ Progress: [███████████████████] 77% (Phase
 | 04-quotations-and-invoicing | 3/3 | 20 min | 7 min |
 | 05-containers-and-deliveries | 3/3 | 20 min | 6.7 min |
 | 06-dashboard-and-analytics | 3/3 | 21 min | 7 min |
-| 07-crm-and-accounts-receivable | 1/3 | 7 min | 7 min |
+| 07-crm-and-accounts-receivable | 2/3 | 14 min | 7 min |
 
 **Recent Trend:**
 - Last 5 plans: 8 min, 13 min, 22 min, 3 min, 15 min
@@ -42,6 +42,7 @@ Progress: [███████████████████] 77% (Phase
 *Updated after each plan completion*
 | Phase 06-dashboard-and-analytics P03 | 3min | 2 tasks | 9 files |
 | Phase 07-crm-and-accounts-receivable P01 | 7min | 2 tasks | 10 files |
+| Phase 07-crm-and-accounts-receivable P02 | 7min | 2 tasks | 16 files |
 
 ## Accumulated Context
 
@@ -113,6 +114,9 @@ Recent decisions affecting current work:
 - [Phase 07-01]: Best-effort email in sendReminderAction: try/catch around sendPaymentReminderEmail, logReminder always called with sent/failed status
 - [Phase 07-01]: Aging query uses dueAt: { lt: new Date() } to restrict to past-due invoices only
 - [Phase 07-01]: WindykacjaCase.@@unique([invoiceId]) enforces one case per invoice at DB level
+- [Phase 07-02]: Server Component + Client Content wrapper split: page.tsx = requireAdmin + data fetch; *-content.tsx = useState for modals — avoids "useState in Server Component" errors
+- [Phase 07-02]: z.input enum defaultValues cast: enum fields from DB need "as const enum type" cast for useForm defaultValues with z.input<Schema>
+- [Phase 07-02]: Pipeline board uses useTransition + updateDealAction + router.refresh() for stage changes (no drag-and-drop per RESEARCH.md)
 
 ### Pending Todos
 
@@ -137,5 +141,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 07-crm-and-accounts-receivable/07-01-PLAN.md (Phase 7 Plan 1 — CRM+Windykacja data layer: 6 Prisma models, DAL, Server Actions, Zod schemas, email, navigation)
+Stopped at: Completed 07-crm-and-accounts-receivable/07-02-PLAN.md (Phase 7 Plan 2 — CRM UI: customer list/create/edit/detail, leads, pipeline board, brand protection watchlist)
 Resume file: None
