@@ -69,11 +69,11 @@ Plans:
   2. Admin can set margins in the visual price_list x product_group matrix editor and see sale prices auto-calculated from purchase prices
   3. User can view the price list assigned to them with correct calculated prices
   4. Admin can clone an existing price list and bulk-edit margins across the cloned copy
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [ ] 03-01-PLAN.md — Prisma schema extension (PriceList, PriceListMargin, User.priceListId), DAL (price-lists.ts), Server Actions, Zod schemas, TypeScript types
+- [ ] 03-02-PLAN.md — Price list admin pages (list, create, detail + margin matrix editor, clone dialog), user "my price list" view, admin user price list assignment
 
 ### Phase 4: Quotations & Invoicing
 **Goal**: Users can build quotations from products and price lists, export them as PDF, send via email, and manage their quotation history; admins can create invoices and print labels
