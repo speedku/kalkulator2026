@@ -67,21 +67,21 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 
 ### Dashboard (DASH)
 
-- [ ] **DASH-01**: Użytkownik widzi główny dashboard z KPI (sprzedaż, zamówienia, dostawy)
-- [ ] **DASH-02**: Dashboard pokazuje wykresy trendów (tygodniowe, miesięczne)
-- [ ] **DASH-03**: Dashboard pokazuje ostatnią aktywność w systemie
-- [ ] **DASH-04**: Dashboard pokazuje nadchodzące dostawy i kontenery
-- [ ] **DASH-05**: Użytkownik widzi powiadomienia w topnav (real-time badge)
-- [ ] **DASH-06**: Użytkownik może zarządzać ustawieniami konta (hasło, preferencje)
+- [x] **DASH-01**: Użytkownik widzi główny dashboard z KPI (sprzedaż, zamówienia, dostawy)
+- [x] **DASH-02**: Dashboard pokazuje wykresy trendów (tygodniowe, miesięczne)
+- [x] **DASH-03**: Dashboard pokazuje ostatnią aktywność w systemie
+- [x] **DASH-04**: Dashboard pokazuje nadchodzące dostawy i kontenery
+- [x] **DASH-05**: Użytkownik widzi powiadomienia w topnav (real-time badge)
+- [x] **DASH-06**: Użytkownik może zarządzać ustawieniami konta (hasło, preferencje)
 
 ### Analytics (ANAL)
 
-- [ ] **ANAL-01**: Admin widzi dashboard sprzedaży (przychody, top produkty, top klienci)
-- [ ] **ANAL-02**: Admin widzi porównanie rok do roku (YoY) i tydzień do tygodnia (WoW)
-- [ ] **ANAL-03**: Admin widzi statystyki paczkarni (wydajność pakowaczy, kolejka)
-- [ ] **ANAL-04**: Admin widzi dashboard magazynu i stan zapasów
-- [ ] **ANAL-05**: Admin może eksportować raporty do Excel
-- [ ] **ANAL-06**: System generuje raport martwych zapasów i zwrotów
+- [x] **ANAL-01**: Admin widzi dashboard sprzedaży (przychody, top produkty, top klienci)
+- [x] **ANAL-02**: Admin widzi porównanie rok do roku (YoY) i tydzień do tygodnia (WoW)
+- [x] **ANAL-03**: Admin widzi statystyki paczkarni (wydajność pakowaczy, kolejka)
+- [x] **ANAL-04**: Admin widzi dashboard magazynu i stan zapasów
+- [x] **ANAL-05**: Admin może eksportować raporty do Excel
+- [x] **ANAL-06**: System generuje raport martwych zapasów i zwrotów
 
 ### Invoicing (FACT)
 
@@ -233,18 +233,18 @@ Odroczone -- nie w bieżącej roadmapie.
 | DELV-02 | Phase 5: Containers & Deliveries | Complete |
 | DELV-03 | Phase 5: Containers & Deliveries | Complete |
 | DELV-04 | Phase 5: Containers & Deliveries | Complete |
-| DASH-01 | Phase 6: Dashboard & Analytics | Pending |
-| DASH-02 | Phase 6: Dashboard & Analytics | Pending |
-| DASH-03 | Phase 6: Dashboard & Analytics | Pending |
-| DASH-04 | Phase 6: Dashboard & Analytics | Pending |
-| DASH-05 | Phase 6: Dashboard & Analytics | Pending |
-| DASH-06 | Phase 6: Dashboard & Analytics | Pending |
-| ANAL-01 | Phase 6: Dashboard & Analytics | Pending |
-| ANAL-02 | Phase 6: Dashboard & Analytics | Pending |
-| ANAL-03 | Phase 6: Dashboard & Analytics | Pending |
-| ANAL-04 | Phase 6: Dashboard & Analytics | Pending |
-| ANAL-05 | Phase 6: Dashboard & Analytics | Pending |
-| ANAL-06 | Phase 6: Dashboard & Analytics | Pending |
+| DASH-01 | Phase 6: Dashboard & Analytics | Complete |
+| DASH-02 | Phase 6: Dashboard & Analytics | Complete |
+| DASH-03 | Phase 6: Dashboard & Analytics | Complete |
+| DASH-04 | Phase 6: Dashboard & Analytics | Complete |
+| DASH-05 | Phase 6: Dashboard & Analytics | Complete |
+| DASH-06 | Phase 6: Dashboard & Analytics | Complete |
+| ANAL-01 | Phase 6: Dashboard & Analytics | Complete |
+| ANAL-02 | Phase 6: Dashboard & Analytics | Complete |
+| ANAL-03 | Phase 6: Dashboard & Analytics | Complete |
+| ANAL-04 | Phase 6: Dashboard & Analytics | Complete |
+| ANAL-05 | Phase 6: Dashboard & Analytics | Complete |
+| ANAL-06 | Phase 6: Dashboard & Analytics | Complete |
 | CRM-01 | Phase 7: CRM & Accounts Receivable | Pending |
 | CRM-02 | Phase 7: CRM & Accounts Receivable | Pending |
 | CRM-03 | Phase 7: CRM & Accounts Receivable | Pending |

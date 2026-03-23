@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation, Auth & System Shell** - Next.js 15 infrastructure, Auth.js v5 with RBAC, Aether design tokens, XAMPP deployment, AetherShell layout, user/system management (completed 2026-03-23)
 - [x] **Phase 2: Product Management** - Full product CRUD with categories, images, Excel import, Subiekt GT sync, bulk operations -- the first feature module proving all architectural patterns (completed 2026-03-23)
 - [x] **Phase 3: Pricing Engine** - Price list management with margin matrices, automatic price calculation, visual margin editor (completed 2026-03-23)
-- [ ] **Phase 4: Quotations & Invoicing** - Quotation builder with PDF/email export, invoice creation with PDF export, label printing -- the primary revenue workflow
+- [x] **Phase 4: Quotations & Invoicing** - Quotation builder with PDF/email export, invoice creation with PDF export, label printing -- the primary revenue workflow (completed 2026-03-23)
 - [x] **Phase 5: Containers & Deliveries** - China import container tracking with status pipeline, domestic delivery management, delivery calendar, documents and labels (completed 2026-03-23)
 - [ ] **Phase 6: Dashboard & Analytics** - Main dashboard with KPI cards and charts, sales analytics, paczkarnia stats, warehouse dashboard, report exports
 - [ ] **Phase 7: CRM & Accounts Receivable** - Customer management, sales pipeline, B2B portal, brand protection, overdue payments dashboard, payment reminders
@@ -125,7 +125,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 06-01-PLAN.md — Prisma models (Notification, NotificationRead, NotificationRecipient, PackerLiveStat), DB migration SQL, dashboard DAL (getDashboardKpis, getWeeklyTrend, getActivityFeed, getUpcomingDeliveries), analytics DAL (getSalesAnalytics, getYoYComparison, getWoWComparison, getPackerStats, getDeadStock), notifications DAL + Server Actions, user settings Server Actions
+- [x] 06-01-PLAN.md — Prisma models (Notification, NotificationRead, NotificationRecipient, PackerLiveStat), DB migration SQL, dashboard DAL (getDashboardKpis, getWeeklyTrend, getActivityFeed, getUpcomingDeliveries), analytics DAL (getSalesAnalytics, getYoYComparison, getWoWComparison, getPackerStats, getDeadStock), notifications DAL + Server Actions, user settings Server Actions (completed 2026-03-23)
 - [ ] 06-02-PLAN.md — Main dashboard page (KPI cards, Recharts trend chart, activity feed, upcoming widget), notification bell in topbar (30s polling), user account settings page (/settings/account)
 - [ ] 06-03-PLAN.md — Admin analytics pages (sales with WoW/YoY, paczkarnia, warehouse/dead stock), Excel export Route Handler (SheetJS, 4 report types)
 

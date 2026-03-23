@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Jeden zunifikowany system obsługujący cały cykl biznesowy ALLBAG -- z nowoczesnym Aether UI, szybki i przyjemny w codziennym użyciu
-**Current focus:** Phase 5: Containers & Deliveries — COMPLETE (all 3 plans done: data layer, container UI, deliveries UI + calendar + Subiekt sync)
+**Current focus:** Phase 6: Dashboard & Analytics — IN PROGRESS (Plan 1 of 3 done: data layer, DAL, notifications, Server Actions)
 
 ## Current Position
 
-Phase: 5 of 9 (Containers & Deliveries) — COMPLETE
-Plan: 3 of 3 in current phase (05-03 complete — deliveries UI + calendar + Subiekt sync)
-Status: Phase Complete — ready for Phase 6
-Last activity: 2026-03-23 - Completed plan 05-03: Deliveries UI + Calendar (15 files: analytics panel, deliveries list/create/detail, unified calendar, Subiekt sync)
+Phase: 6 of 9 (Dashboard & Analytics) — In Progress
+Plan: 1 of 3 in current phase (06-01 complete — Prisma models, DB migration SQL, dashboard/analytics/notifications DAL, Server Actions, API route)
+Status: Ready for 06-02 (main dashboard UI)
+Last activity: 2026-03-23 - Completed plan 06-01: Dashboard data layer (9 new files: schema extension, migration SQL, 2 DAL files, 3 action/route files, 2 type files)
 
-Progress: [███████████████] 59% (Phase 5 Plan 3 of 9 complete — 13/22 plans done)
+Progress: [████████████████] 63% (Phase 6 Plan 1 of 9 — 14/22 plans done)
 
 ## Performance Metrics
 
@@ -32,6 +32,7 @@ Progress: [███████████████] 59% (Phase 5 Plan 3 of
 | 03-pricing-engine | 2/2 | 18 min | 9 min |
 | 04-quotations-and-invoicing | 3/3 | 20 min | 7 min |
 | 05-containers-and-deliveries | 3/3 | 20 min | 6.7 min |
+| 06-dashboard-and-analytics | 1/3 | 5 min | 5 min |
 
 **Recent Trend:**
 - Last 5 plans: 8 min, 13 min, 22 min, 3 min, 15 min
@@ -95,6 +96,10 @@ Recent decisions affecting current work:
 - [Phase 05-03]: date-fns was missing from node_modules despite package.json listing — installed explicitly; buildCalendarGrid uses weekStartsOn:1 (Monday)
 - [Phase 05-03]: SubiektSyncBtn uses toast.info for discovered=true errors — admin sees it as configuration step, not failure
 - [Phase 05-03]: Delivery status pipeline excludes "cancelled" from progress steps; cancel is a separate red button for non-terminal states
+- [Phase 06-01]: ActivityEntry.entityId typed as number|null (not string) — matches Prisma ActivityLog.entityId: Int?
+- [Phase 06-01]: getWarehouseKpis uses Container.totalValue (not totalValueUsd — field doesn't exist in schema)
+- [Phase 06-01]: AND-wrapped OR pattern for Prisma where clause with multiple OR conditions avoids duplicate key TypeScript error
+- [Phase 06-01]: getPackerStats try/catch for graceful empty state — packer_live_stats table exists in prod but not local dev
 
 ### Pending Todos
 
@@ -119,5 +124,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 05-containers-and-deliveries/05-03-PLAN.md (Phase 5 complete — deliveries UI, delivery calendar, Subiekt sync; 15 files)
+Stopped at: Completed 06-dashboard-and-analytics/06-01-PLAN.md (Phase 6 Plan 1 — data layer: schema, DAL, notifications, Server Actions, API route)
 Resume file: None
