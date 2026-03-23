@@ -2,19 +2,15 @@
 
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
 import { createContainerAction } from "@/lib/actions/containers";
 import { ContainerSchema } from "@/lib/validations/containers";
-import type { BuilderProduct } from "@/lib/dal/products";
 
 type FormValues = z.input<typeof ContainerSchema>;
-
-interface Props {
-  products: BuilderProduct[];
-}
 
 const STATUS_OPTIONS = [
   { value: "in_transit", label: "W drodze" },
@@ -23,7 +19,7 @@ const STATUS_OPTIONS = [
   { value: "completed", label: "Gotowy" },
 ];
 
-export function ContainerForm({ products: _products }: Props) {
+export function ContainerForm() {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
@@ -218,12 +214,12 @@ export function ContainerForm({ products: _products }: Props) {
         >
           {isPending ? "Tworzenie..." : "Utwórz kontener"}
         </button>
-        <a
+        <Link
           href="/containers"
           className="text-sm text-gray-400 hover:text-white transition-colors"
         >
           Anuluj
-        </a>
+        </Link>
       </div>
     </form>
   );
