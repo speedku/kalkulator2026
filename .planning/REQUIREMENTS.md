@@ -49,21 +49,21 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 
 ### Containers / China Import (CONT)
 
-- [ ] **CONT-01**: Admin może tworzyć i zarządzać kontenerami (numer, przewoźnik, ETA)
-- [ ] **CONT-02**: Admin może śledzić status kontenera (in_transit > at_port > unloaded > completed)
-- [ ] **CONT-03**: Admin może dodawać pozycje (produkty) do kontenera
-- [ ] **CONT-04**: Admin może uploadować dokumenty do kontenera (do MinIO)
-- [ ] **CONT-05**: System wyświetla odliczanie do ETA kontenera
-- [ ] **CONT-06**: Admin może generować etykiety chińskie dla produktów w kontenerze
-- [ ] **CONT-07**: System pokazuje analityki kontenerów (wartość, terminowość, koszty)
-- [ ] **CONT-08**: Admin może wysyłać powiadomienia email o statusie kontenera
+- [x] **CONT-01**: Admin może tworzyć i zarządzać kontenerami (numer, przewoźnik, ETA)
+- [x] **CONT-02**: Admin może śledzić status kontenera (in_transit > at_port > unloaded > completed)
+- [x] **CONT-03**: Admin może dodawać pozycje (produkty) do kontenera
+- [x] **CONT-04**: Admin może uploadować dokumenty do kontenera (do MinIO)
+- [x] **CONT-05**: System wyświetla odliczanie do ETA kontenera
+- [x] **CONT-06**: Admin może generować etykiety chińskie dla produktów w kontenerze
+- [x] **CONT-07**: System pokazuje analityki kontenerów (wartość, terminowość, koszty)
+- [x] **CONT-08**: Admin może wysyłać powiadomienia email o statusie kontenera
 
 ### Domestic Deliveries (DELV)
 
-- [ ] **DELV-01**: Admin może tworzyć i zarządzać dostawami krajowymi
-- [ ] **DELV-02**: Admin może śledzić status dostawy krajowej
-- [ ] **DELV-03**: System pokazuje kalendarz dostaw (China + krajowe)
-- [ ] **DELV-04**: Admin może synchronizować dostawy z Subiekt GT
+- [x] **DELV-01**: Admin może tworzyć i zarządzać dostawami krajowymi
+- [x] **DELV-02**: Admin może śledzić status dostawy krajowej
+- [x] **DELV-03**: System pokazuje kalendarz dostaw (China + krajowe)
+- [x] **DELV-04**: Admin może synchronizować dostawy z Subiekt GT
 
 ### Dashboard (DASH)
 
@@ -221,18 +221,18 @@ Odroczone -- nie w bieżącej roadmapie.
 | FACT-05 | Phase 4: Quotations & Invoicing | Complete |
 | FACT-06 | Phase 4: Quotations & Invoicing | Complete |
 | FACT-07 | Phase 4: Quotations & Invoicing | Complete |
-| CONT-01 | Phase 5: Containers & Deliveries | Pending |
-| CONT-02 | Phase 5: Containers & Deliveries | Pending |
-| CONT-03 | Phase 5: Containers & Deliveries | Pending |
-| CONT-04 | Phase 5: Containers & Deliveries | Pending |
-| CONT-05 | Phase 5: Containers & Deliveries | Pending |
-| CONT-06 | Phase 5: Containers & Deliveries | Pending |
-| CONT-07 | Phase 5: Containers & Deliveries | Pending |
-| CONT-08 | Phase 5: Containers & Deliveries | Pending |
-| DELV-01 | Phase 5: Containers & Deliveries | Pending |
-| DELV-02 | Phase 5: Containers & Deliveries | Pending |
-| DELV-03 | Phase 5: Containers & Deliveries | Pending |
-| DELV-04 | Phase 5: Containers & Deliveries | Pending |
+| CONT-01 | Phase 5: Containers & Deliveries | Complete |
+| CONT-02 | Phase 5: Containers & Deliveries | Complete |
+| CONT-03 | Phase 5: Containers & Deliveries | Complete |
+| CONT-04 | Phase 5: Containers & Deliveries | Complete |
+| CONT-05 | Phase 5: Containers & Deliveries | Complete |
+| CONT-06 | Phase 5: Containers & Deliveries | Complete |
+| CONT-07 | Phase 5: Containers & Deliveries | Complete |
+| CONT-08 | Phase 5: Containers & Deliveries | Complete |
+| DELV-01 | Phase 5: Containers & Deliveries | Complete |
+| DELV-02 | Phase 5: Containers & Deliveries | Complete |
+| DELV-03 | Phase 5: Containers & Deliveries | Complete |
+| DELV-04 | Phase 5: Containers & Deliveries | Complete |
 | DASH-01 | Phase 6: Dashboard & Analytics | Pending |
 | DASH-02 | Phase 6: Dashboard & Analytics | Pending |
 | DASH-03 | Phase 6: Dashboard & Analytics | Pending |

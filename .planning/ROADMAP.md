@@ -105,12 +105,12 @@ Plans:
   5. Admin can create and track domestic deliveries with status management
   6. Users see a unified delivery calendar showing both China containers and domestic deliveries
   7. Admin can sync delivery data with Subiekt GT
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 05-01: TBD
-- [ ] 05-02: TBD
-- [ ] 05-03: TBD
+- [ ] 05-01-PLAN.md — Prisma schema (6 models), SQL migration, container + delivery DAL + Server Actions + Zod schemas + types, sendContainerStatusEmail, navigation entries
+- [ ] 05-02-PLAN.md — Container list page, container create form, container detail (items editor, document upload, Chinese labels, ETA countdown, notify dialog), presigned upload route
+- [ ] 05-03-PLAN.md — Container analytics stats panel, domestic deliveries CRUD UI, unified delivery calendar (date-fns monthly grid), Subiekt GT sync with schema discovery
 
 ### Phase 6: Dashboard & Analytics
 **Goal**: Users see a data-rich main dashboard with KPI cards, charts, and activity feeds; admins access detailed analytics for sales, warehouse, and packing operations
