@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Jeden zunifikowany system obsługujący cały cykl biznesowy ALLBAG -- z nowoczesnym Aether UI, szybki i przyjemny w codziennym użyciu
-**Current focus:** Phase 6: Dashboard & Analytics — IN PROGRESS (Plan 1 of 3 done: data layer, DAL, notifications, Server Actions)
+**Current focus:** Phase 6: Dashboard & Analytics — IN PROGRESS (Plan 2 of 3 done: main dashboard UI, KPI cards, trend chart, activity feed, notification bell, account settings)
 
 ## Current Position
 
 Phase: 6 of 9 (Dashboard & Analytics) — In Progress
-Plan: 1 of 3 in current phase (06-01 complete — Prisma models, DB migration SQL, dashboard/analytics/notifications DAL, Server Actions, API route)
-Status: Ready for 06-02 (main dashboard UI)
-Last activity: 2026-03-23 - Completed plan 06-01: Dashboard data layer (9 new files: schema extension, migration SQL, 2 DAL files, 3 action/route files, 2 type files)
+Plan: 2 of 3 in current phase (06-02 complete — main dashboard UI, 5 KPI cards, Recharts AreaChart, activity feed, upcoming widget, notification bell in topbar, account settings page)
+Status: Ready for 06-03 (analytics + notifications UI)
+Last activity: 2026-03-23 - Completed plan 06-02: Dashboard UI (8 new files: page.tsx, 5 dashboard components, account settings page + form)
 
-Progress: [████████████████] 63% (Phase 6 Plan 1 of 9 — 14/22 plans done)
+Progress: [█████████████████] 68% (Phase 6 Plan 2 of 9 — 15/22 plans done)
 
 ## Performance Metrics
 
@@ -32,7 +32,7 @@ Progress: [████████████████] 63% (Phase 6 Plan 1
 | 03-pricing-engine | 2/2 | 18 min | 9 min |
 | 04-quotations-and-invoicing | 3/3 | 20 min | 7 min |
 | 05-containers-and-deliveries | 3/3 | 20 min | 6.7 min |
-| 06-dashboard-and-analytics | 1/3 | 5 min | 5 min |
+| 06-dashboard-and-analytics | 2/3 | 18 min | 9 min |
 
 **Recent Trend:**
 - Last 5 plans: 8 min, 13 min, 22 min, 3 min, 15 min
@@ -100,6 +100,9 @@ Recent decisions affecting current work:
 - [Phase 06-01]: getWarehouseKpis uses Container.totalValue (not totalValueUsd — field doesn't exist in schema)
 - [Phase 06-01]: AND-wrapped OR pattern for Prisma where clause with multiple OR conditions avoids duplicate key TypeScript error
 - [Phase 06-01]: getPackerStats try/catch for graceful empty state — packer_live_stats table exists in prod but not local dev
+- [Phase 06-02]: NotificationBell in (dashboard)/_components not aether/ — depends on /kalkulator2026 basePath, not a reusable design system component
+- [Phase 06-02]: TrendChart uses own styled div not GlassCard — needs direct p-5 control and avoids Framer Motion double-border
+- [Phase 06-02]: Dashboard data flow: Server Component Promise.all → typed props → client components (no prop drilling issues, no context needed)
 
 ### Pending Todos
 
@@ -124,5 +127,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 06-dashboard-and-analytics/06-01-PLAN.md (Phase 6 Plan 1 — data layer: schema, DAL, notifications, Server Actions, API route)
+Stopped at: Completed 06-dashboard-and-analytics/06-02-PLAN.md (Phase 6 Plan 2 — dashboard UI: 5 KPI cards, Recharts chart, activity feed, upcoming widget, notification bell, account settings)
 Resume file: None
