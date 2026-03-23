@@ -26,12 +26,15 @@ model User {
   resetToken               String?   @map("reset_token")
   resetTokenExpires        DateTime? @map("reset_token_expires")
 
+  priceListId  Int?       @map("price_list_id")
+
   // Relations
   accessCode         AccessCode?              @relation(fields: [accessCodeId], references: [id])
   permissions        UserPermission[]
   activityLogs       ActivityLog[]
   notes              UserNote[]
   permissionsHistory UserPermissionsHistory[] @relation("changed_user")
+  priceList          PriceList?               @relation(fields: [priceListId], references: [id])
 
   @@map("users")
 }
@@ -198,14 +201,15 @@ model ProductCategory {
 }
 
 model ProductGroup {
-  id              Int       @id @default(autoincrement())
-  name            String    @db.VarChar(100)
-  displayOrder    Int       @default(0) @map("display_order")
-  backgroundColor String    @default("white") @map("background_color") @db.VarChar(20)
-  isActive        Boolean   @default(true) @map("is_active")
-  createdAt       DateTime  @default(now()) @map("created_at")
-  updatedAt       DateTime  @updatedAt @map("updated_at")
+  id              Int               @id @default(autoincrement())
+  name            String            @db.VarChar(100)
+  displayOrder    Int               @default(0) @map("display_order")
+  backgroundColor String            @default("white") @map("background_color") @db.VarChar(20)
+  isActive        Boolean           @default(true) @map("is_active")
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime          @updatedAt @map("updated_at")
   products        Product[]
+  margins         PriceListMargin[]
 
   @@map("product_groups")
 }
@@ -271,4 +275,35 @@ model ProductPrice {
   variant        ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
 
   @@map("product_prices")
+}
+
+// Phase 3: Pricing Engine models
+
+model PriceList {
+  id           Int               @id @default(autoincrement())
+  code         String            @unique @db.VarChar(50)
+  name         String            @db.VarChar(100)
+  description  String?           @db.Text
+  isActive     Boolean           @default(true) @map("is_active")
+  displayOrder Int               @default(0) @map("display_order")
+  createdAt    DateTime          @default(now()) @map("created_at")
+  updatedAt    DateTime          @updatedAt @map("updated_at")
+  margins      PriceListMargin[]
+  users        User[]
+
+  @@map("price_lists")
+}
+
+model PriceListMargin {
+  id             Int          @id @default(autoincrement())
+  priceListId    Int          @map("price_list_id")
+  productGroupId Int          @map("product_group_id")
+  marginPercent  Decimal      @map("margin_percent") @db.Decimal(5, 2)
+  createdAt      DateTime     @default(now()) @map("created_at")
+  updatedAt      DateTime     @updatedAt @map("updated_at")
+  priceList      PriceList    @relation(fields: [priceListId], references: [id], onDelete: Cascade)
+  productGroup   ProductGroup @relation(fields: [productGroupId], references: [id], onDelete: Cascade)
+
+  @@unique([priceListId, productGroupId])
+  @@map("price_list_margins")
 }
