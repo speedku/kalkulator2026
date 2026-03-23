@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Jeden zunifikowany system obsługujący cały cykl biznesowy ALLBAG -- z nowoczesnym Aether UI, szybki i przyjemny w codziennym użyciu
-**Current focus:** Phase 6: Dashboard & Analytics — COMPLETE (all 3 plans done: data layer, dashboard UI, analytics pages + Excel export)
+**Current focus:** Phase 7: CRM & Accounts Receivable — Plan 1 complete (data layer: 6 Prisma models, DAL, Server Actions, Zod schemas, email, navigation)
 
 ## Current Position
 
-Phase: 6 of 9 (Dashboard & Analytics) — Complete
-Plan: 3 of 3 in current phase (06-03 complete — analytics pages: /analytics, /analytics/paczkarnia, /analytics/warehouse + Excel export)
-Status: Phase 6 complete — ready for Phase 7
-Last activity: 2026-03-23 - Completed plan 06-03: Analytics pages & Excel export (9 new files: 3 pages, 5 chart/table components, export route)
+Phase: 7 of 9 (CRM & Accounts Receivable) — In Progress
+Plan: 1 of 3 in current phase (07-01 complete — DB migration SQL + DAL + Server Actions + Zod schemas + email + navigation)
+Status: Plan 07-01 complete — ready for Plan 07-02 (CRM UI)
+Last activity: 2026-03-23 - Completed plan 07-01: CRM & Windykacja data layer (10 files: 6 Prisma models, 2 DAL files, 2 actions files, 2 validations files, email extension, navigation update)
 
-Progress: [██████████████████] 72% (Phase 6 Plan 3 of 9 — 16/22 plans done)
+Progress: [███████████████████] 77% (Phase 7 Plan 1 of 9 — 17/22 plans done)
 
 ## Performance Metrics
 
@@ -32,7 +32,8 @@ Progress: [██████████████████] 72% (Phase 6 
 | 03-pricing-engine | 2/2 | 18 min | 9 min |
 | 04-quotations-and-invoicing | 3/3 | 20 min | 7 min |
 | 05-containers-and-deliveries | 3/3 | 20 min | 6.7 min |
-| 06-dashboard-and-analytics | 2/3 | 18 min | 9 min |
+| 06-dashboard-and-analytics | 3/3 | 21 min | 7 min |
+| 07-crm-and-accounts-receivable | 1/3 | 7 min | 7 min |
 
 **Recent Trend:**
 - Last 5 plans: 8 min, 13 min, 22 min, 3 min, 15 min
@@ -40,6 +41,7 @@ Progress: [██████████████████] 72% (Phase 6 
 
 *Updated after each plan completion*
 | Phase 06-dashboard-and-analytics P03 | 3min | 2 tasks | 9 files |
+| Phase 07-crm-and-accounts-receivable P01 | 7min | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -107,6 +109,10 @@ Recent decisions affecting current work:
 - [Phase 06-03]: SheetJS require() import — xlsx 0.20.3 CommonJS module; ESM import * as causes TS resolution issues; require() cast avoids cleanly
 - [Phase 06-03]: Buffer.from(XLSX.write()) wrapping — XLSX.write returns Buffer<ArrayBufferLike> not assignable to BodyInit; Buffer.from() fixes (same pattern as Phase 04-02 react-pdf)
 - [Phase 06-03]: YoY pivot in client — server passes YoYRow[] (year+month rows), client pivots to 12-point array with year-columns for Recharts multi-line
+- [Phase 07-01]: Soft delete for Customer: deleteCustomer() sets isActive=false to preserve historical FK relations to deals, leads, windykacja cases
+- [Phase 07-01]: Best-effort email in sendReminderAction: try/catch around sendPaymentReminderEmail, logReminder always called with sent/failed status
+- [Phase 07-01]: Aging query uses dueAt: { lt: new Date() } to restrict to past-due invoices only
+- [Phase 07-01]: WindykacjaCase.@@unique([invoiceId]) enforces one case per invoice at DB level
 
 ### Pending Todos
 
@@ -131,5 +137,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 06-dashboard-and-analytics/06-03-PLAN.md (Phase 6 Plan 3 — analytics pages: /analytics BarChart+YoY, /analytics/paczkarnia, /analytics/warehouse KPI+dead-stock, Excel export route)
+Stopped at: Completed 07-crm-and-accounts-receivable/07-01-PLAN.md (Phase 7 Plan 1 — CRM+Windykacja data layer: 6 Prisma models, DAL, Server Actions, Zod schemas, email, navigation)
 Resume file: None

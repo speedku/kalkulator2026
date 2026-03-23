@@ -92,10 +92,10 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 
 ### Windykacja / AR (WIND)
 
-- [ ] **WIND-01**: Admin widzi dashboard przeterminowanych płatności (aging buckets)
-- [ ] **WIND-02**: Admin może tworzyć i wysyłać przypomnienia płatności (email)
-- [ ] **WIND-03**: System generuje dokumenty windykacyjne (PDF)
-- [ ] **WIND-04**: Admin może śledzić status spraw windykacyjnych
+- [x] **WIND-01**: Admin widzi dashboard przeterminowanych płatności (aging buckets)
+- [x] **WIND-02**: Admin może tworzyć i wysyłać przypomnienia płatności (email)
+- [x] **WIND-03**: System generuje dokumenty windykacyjne (PDF)
+- [x] **WIND-04**: Admin może śledzić status spraw windykacyjnych
 
 ### AllTask Integration (TASK)
 
@@ -134,12 +134,12 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 
 ### CRM & B2B (CRM)
 
-- [ ] **CRM-01**: Admin może zarządzać bazą klientów (CRUD)
-- [ ] **CRM-02**: System wspiera lead generation (nowi potencjalni klienci)
-- [ ] **CRM-03**: Admin może reaktywować nieaktywnych klientów
-- [ ] **CRM-04**: Admin widzi pipeline sprzedażowy (etapy, wartości)
-- [ ] **CRM-05**: System oferuje portal B2B dla klientów z cennikiem
-- [ ] **CRM-06**: Admin widzi monitoring ochrony marki (brand protection)
+- [x] **CRM-01**: Admin może zarządzać bazą klientów (CRUD)
+- [x] **CRM-02**: System wspiera lead generation (nowi potencjalni klienci)
+- [x] **CRM-03**: Admin może reaktywować nieaktywnych klientów
+- [x] **CRM-04**: Admin widzi pipeline sprzedażowy (etapy, wartości)
+- [x] **CRM-05**: System oferuje portal B2B dla klientów z cennikiem
+- [x] **CRM-06**: Admin widzi monitoring ochrony marki (brand protection)
 
 ### System Management (SYST)
 
@@ -245,16 +245,16 @@ Odroczone -- nie w bieżącej roadmapie.
 | ANAL-04 | Phase 6: Dashboard & Analytics | Complete |
 | ANAL-05 | Phase 6: Dashboard & Analytics | Complete |
 | ANAL-06 | Phase 6: Dashboard & Analytics | Complete |
-| CRM-01 | Phase 7: CRM & Accounts Receivable | Pending |
-| CRM-02 | Phase 7: CRM & Accounts Receivable | Pending |
-| CRM-03 | Phase 7: CRM & Accounts Receivable | Pending |
-| CRM-04 | Phase 7: CRM & Accounts Receivable | Pending |
-| CRM-05 | Phase 7: CRM & Accounts Receivable | Pending |
-| CRM-06 | Phase 7: CRM & Accounts Receivable | Pending |
-| WIND-01 | Phase 7: CRM & Accounts Receivable | Pending |
-| WIND-02 | Phase 7: CRM & Accounts Receivable | Pending |
-| WIND-03 | Phase 7: CRM & Accounts Receivable | Pending |
-| WIND-04 | Phase 7: CRM & Accounts Receivable | Pending |
+| CRM-01 | Phase 7: CRM & Accounts Receivable | Complete |
+| CRM-02 | Phase 7: CRM & Accounts Receivable | Complete |
+| CRM-03 | Phase 7: CRM & Accounts Receivable | Complete |
+| CRM-04 | Phase 7: CRM & Accounts Receivable | Complete |
+| CRM-05 | Phase 7: CRM & Accounts Receivable | Complete |
+| CRM-06 | Phase 7: CRM & Accounts Receivable | Complete |
+| WIND-01 | Phase 7: CRM & Accounts Receivable | Complete |
+| WIND-02 | Phase 7: CRM & Accounts Receivable | Complete |
+| WIND-03 | Phase 7: CRM & Accounts Receivable | Complete |
+| WIND-04 | Phase 7: CRM & Accounts Receivable | Complete |
 | HR-01 | Phase 8: HR, Email Campaigns & AllTask | Pending |
 | HR-02 | Phase 8: HR, Email Campaigns & AllTask | Pending |
 | HR-03 | Phase 8: HR, Email Campaigns & AllTask | Pending |
