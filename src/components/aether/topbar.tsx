@@ -5,6 +5,7 @@ import { signOut } from "next-auth/react";
 import { LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MobileMenuButton } from "./sidebar-client";
+import { NotificationBell } from "@/app/(dashboard)/_components/notification-bell";
 
 interface TopbarProps {
   user: { name: string; role: string } | null;
@@ -49,6 +50,9 @@ export function Topbar({ user, className }: TopbarProps) {
           <span className="hidden sm:block text-sm text-aether-text-secondary">
             {user.name}
           </span>
+
+          {/* Notification bell */}
+          <NotificationBell />
 
           {/* Avatar */}
           <div className="flex size-8 items-center justify-center rounded-full bg-aether-blue/20 text-xs font-semibold text-aether-blue">
