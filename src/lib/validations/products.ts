@@ -32,4 +32,5 @@ export const bulkDeleteSchema = z.object({
 });
 
 export type CreateProductInput = z.infer<typeof createProductSchema>;
+export type CreateProductFormInput = z.input<typeof createProductSchema>;
 export type UpdateProductInput = z.infer<typeof updateProductSchema>;
