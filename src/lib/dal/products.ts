@@ -84,3 +84,35 @@ export async function bulkDeleteProducts(ids: number[]) {
     data: { isActive: false },
   });
 }
+
+// ─── Quotation builder ────────────────────────────────────────────────────────
+
+export interface BuilderProduct {
+  id: number;
+  name: string;
+  sku: string | null;
+  purchasePrice: number | null; // mapped from product.price (purchase cost field)
+  productGroupId: number | null;
+}
+
+export async function getProductsForBuilder(): Promise<BuilderProduct[]> {
+  await requireAuth();
+  const rows = await prisma.product.findMany({
+    where: { isActive: true },
+    orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
+    select: {
+      id: true,
+      name: true,
+      sku: true,
+      price: true,
+      productGroupId: true,
+    },
+  });
+  return rows.map((r) => ({
+    id: r.id,
+    name: r.name,
+    sku: r.sku,
+    purchasePrice: r.price !== null ? Number(r.price) : null,
+    productGroupId: r.productGroupId,
+  }));
+}
