@@ -1,0 +1,8 @@
+[     275ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost/api/auth/check.php:0
+[     606ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost/favicon.svg:0
+[   59423ms] [WARNING] reCAPTCHA failed: Error: Invalid site key or not loaded in api.js: SITE_KEY_PLACEHOLDER
+    at Array.<anonymous> (https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__pl.js:738:385)
+    at https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__pl.js:760:149
+    at HTMLFormElement.<anonymous> (http://localhost/login/:1087:59) @ http://localhost/login/:1088
+[   61219ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost/favicon.svg?v=3.0:0
+[   63534ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost/favicon.ico?v=3.0:0
