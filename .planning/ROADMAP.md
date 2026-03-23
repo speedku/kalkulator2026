@@ -140,12 +140,12 @@ Plans:
   4. Admin can view brand protection monitoring alerts
   5. Admin sees the overdue payments dashboard with aging buckets and can create/send payment reminder emails
   6. Admin can generate collection documents (PDF) and track the status of collection cases
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 07-01: TBD
-- [ ] 07-02: TBD
-- [ ] 07-03: TBD
+- [ ] 07-01-PLAN.md — Prisma schema (6 models: Customer, Lead, Deal, BrandWatchItem, WindykacjaCase, ReminderLog), DB migration SQL, CRM DAL + windykacja DAL, Server Actions, Zod schemas, sendPaymentReminderEmail(), navigation entries
+- [ ] 07-02-PLAN.md — CRM UI: customer list/create/edit/detail, leads management, pipeline board (5 stages), brand protection watchlist
+- [ ] 07-03-PLAN.md — Windykacja UI: aging dashboard with bucket chart, case detail + send reminder dialog, PDF Route Handler + template; B2B portal route group with price list view
 
 ### Phase 8: HR, Email Campaigns & AllTask
 **Goal**: Admins can manage employees and track work hours, run email marketing campaigns, and users can seamlessly access AllTask with SSO
