@@ -35,6 +35,8 @@ model User {
   notes              UserNote[]
   permissionsHistory UserPermissionsHistory[] @relation("changed_user")
   priceList          PriceList?               @relation(fields: [priceListId], references: [id])
+  quotations         Quotation[]
+  invoices           Invoice[]
 
   @@map("users")
 }
@@ -290,6 +292,7 @@ model PriceList {
   updatedAt    DateTime          @updatedAt @map("updated_at")
   margins      PriceListMargin[]
   users        User[]
+  quotations   Quotation[]
 
   @@map("price_lists")
 }
@@ -306,4 +309,80 @@ model PriceListMargin {
 
   @@unique([priceListId, productGroupId])
   @@map("price_list_margins")
+}
+
+// Phase 4: Quotations & Invoicing models
+
+model Quotation {
+  id               Int             @id @default(autoincrement())
+  quotationNumber  String          @unique @map("quotation_number")
+  customerName     String          @map("customer_name")
+  customerEmail    String?         @map("customer_email")
+  priceListId      Int?            @map("price_list_id")
+  status           String          @default("draft") // draft | sent | accepted | rejected
+  totalAmount      Decimal         @default(0) @db.Decimal(10, 2) @map("total_amount")
+  notes            String?         @db.Text
+  createdBy        Int             @map("created_by")
+  createdAt        DateTime        @default(now()) @map("created_at")
+  updatedAt        DateTime        @updatedAt @map("updated_at")
+
+  items            QuotationItem[]
+  priceList        PriceList?      @relation(fields: [priceListId], references: [id], onDelete: SetNull)
+  creator          User            @relation(fields: [createdBy], references: [id])
+
+  @@map("quotations")
+}
+
+model QuotationItem {
+  id           Int       @id @default(autoincrement())
+  quotationId  Int       @map("quotation_id")
+  productId    Int?      @map("product_id")
+  productName  String    @map("product_name")
+  sku          String?
+  quantity     Int
+  unitPrice    Decimal   @db.Decimal(10, 2) @map("unit_price")
+  totalPrice   Decimal   @db.Decimal(10, 2) @map("total_price")
+
+  quotation    Quotation @relation(fields: [quotationId], references: [id], onDelete: Cascade)
+
+  @@map("quotation_items")
+}
+
+model Invoice {
+  id              Int           @id @default(autoincrement())
+  invoiceNumber   String        @unique @map("invoice_number")
+  customerName    String        @map("customer_name")
+  customerAddress String?       @db.Text @map("customer_address")
+  customerNip     String?       @map("customer_nip")
+  status          String        @default("draft") // draft | issued | paid | cancelled
+  totalNet        Decimal       @default(0) @db.Decimal(10, 2) @map("total_net")
+  totalVat        Decimal       @default(0) @db.Decimal(10, 2) @map("total_vat")
+  totalGross      Decimal       @default(0) @db.Decimal(10, 2) @map("total_gross")
+  vatRate         Int           @default(23) @map("vat_rate") // percent, e.g. 23
+  notes           String?       @db.Text
+  issuedAt        DateTime?     @map("issued_at")
+  dueAt           DateTime?     @map("due_at")
+  createdBy       Int           @map("created_by")
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+
+  items           InvoiceItem[]
+  creator         User          @relation(fields: [createdBy], references: [id])
+
+  @@map("invoices")
+}
+
+model InvoiceItem {
+  id          Int     @id @default(autoincrement())
+  invoiceId   Int     @map("invoice_id")
+  productId   Int?    @map("product_id")
+  productName String  @map("product_name")
+  sku         String?
+  quantity    Int
+  unitNet     Decimal @db.Decimal(10, 2) @map("unit_net")
+  totalNet    Decimal @db.Decimal(10, 2) @map("total_net")
+
+  invoice     Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  @@map("invoice_items")
 }
