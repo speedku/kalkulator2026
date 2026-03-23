@@ -33,7 +33,7 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 ### Pricing (PRICE)
 
 - [ ] **PRICE-01**: Admin może tworzyć cenniki (price lists) dla różnych grup klientów
-- [ ] **PRICE-02**: Admin może ustawiać marże w macierzy cennik × grupa produktowa
+- [ ] **PRICE-02**: Admin może ustawiać marże w macierzy cennik x grupa produktowa
 - [ ] **PRICE-03**: System automatycznie oblicza ceny sprzedaży na podstawie ceny zakupu i marży
 - [ ] **PRICE-04**: Użytkownik może przeglądać przypisany mu cennik
 - [ ] **PRICE-05**: Admin może klonować cenniki i edytować je masowo
@@ -50,7 +50,7 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 ### Containers / China Import (CONT)
 
 - [ ] **CONT-01**: Admin może tworzyć i zarządzać kontenerami (numer, przewoźnik, ETA)
-- [ ] **CONT-02**: Admin może śledzić status kontenera (in_transit → at_port → unloaded → completed)
+- [ ] **CONT-02**: Admin może śledzić status kontenera (in_transit > at_port > unloaded > completed)
 - [ ] **CONT-03**: Admin może dodawać pozycje (produkty) do kontenera
 - [ ] **CONT-04**: Admin może uploadować dokumenty do kontenera (do MinIO)
 - [ ] **CONT-05**: System wyświetla odliczanie do ETA kontenera
@@ -125,7 +125,7 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 
 - [ ] **AI-01**: Użytkownik może używać chatbota AI (Claude/OpenAI) w kontekście danych biznesowych
 - [ ] **AI-02**: System przechowuje historię rozmów AI
-- [ ] **AI-03**: System obsługuje zapytania o dane (NL → SQL → wyniki)
+- [ ] **AI-03**: System obsługuje zapytania o dane (NL > SQL > wyniki)
 
 ### Kreator (KREA)
 
@@ -152,7 +152,7 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 
 ## v2 Requirements
 
-Odroczone — nie w bieżącej roadmapie.
+Odroczone -- nie w bieżącej roadmapie.
 
 ### KSeF e-Invoicing
 
@@ -175,7 +175,7 @@ Odroczone — nie w bieżącej roadmapie.
 | Feature | Reason |
 |---------|--------|
 | Full ERP replacement | Subiekt GT pozostaje jako source of truth dla zamówień |
-| Migration do PostgreSQL | MySQL 8 zachowane — zero ryzyka migracji danych prod |
+| Migration do PostgreSQL | MySQL 8 zachowane -- zero ryzyka migracji danych prod |
 | AllTask full rebuild | Dojrzała aplikacja FastAPI; iframe + SSO wystarczy |
 | Native mobile app | Web-first (responsive), mobile w v2 |
 | Payroll / ZUS | Zbyt specjalistyczne, poza scope ALLBAG |
@@ -185,34 +185,99 @@ Odroczone — nie w bieżącej roadmapie.
 
 ## Traceability
 
-Wypełnione przez roadmapper podczas tworzenia roadmapy.
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01...AUTH-08 | Phase 1 | Pending |
-| PROD-01...PROD-07 | Phase 2 | Pending |
-| PRICE-01...PRICE-05 | Phase 3 | Pending |
-| QUOT-01...QUOT-06 | Phase 3 | Pending |
-| CONT-01...CONT-08 | Phase 4 | Pending |
-| DELV-01...DELV-04 | Phase 4 | Pending |
-| DASH-01...DASH-06 | Phase 5 | Pending |
-| ANAL-01...ANAL-06 | Phase 5 | Pending |
-| FACT-01...FACT-07 | Phase 3 | Pending |
-| WIND-01...WIND-04 | Phase 6 | Pending |
-| TASK-01...TASK-03 | Phase 6 | Pending |
-| HR-01...HR-03 | Phase 7 | Pending |
-| EMAIL-01...EMAIL-04 | Phase 7 | Pending |
-| TRADE-01...TRADE-02 | Phase 7 | Pending |
-| AI-01...AI-03 | Phase 8 | Pending |
-| KREA-01...KREA-02 | Phase 8 | Pending |
-| CRM-01...CRM-06 | Phase 8 | Pending |
-| SYST-01...SYST-04 | Phase 2 | Pending |
+| AUTH-01 | Phase 1: Foundation, Auth & System Shell | Pending |
+| AUTH-02 | Phase 1: Foundation, Auth & System Shell | Pending |
+| AUTH-03 | Phase 1: Foundation, Auth & System Shell | Pending |
+| AUTH-04 | Phase 1: Foundation, Auth & System Shell | Pending |
+| AUTH-05 | Phase 1: Foundation, Auth & System Shell | Pending |
+| AUTH-06 | Phase 1: Foundation, Auth & System Shell | Pending |
+| AUTH-07 | Phase 1: Foundation, Auth & System Shell | Pending |
+| AUTH-08 | Phase 1: Foundation, Auth & System Shell | Pending |
+| SYST-01 | Phase 1: Foundation, Auth & System Shell | Pending |
+| SYST-02 | Phase 1: Foundation, Auth & System Shell | Pending |
+| SYST-03 | Phase 1: Foundation, Auth & System Shell | Pending |
+| SYST-04 | Phase 1: Foundation, Auth & System Shell | Pending |
+| PROD-01 | Phase 2: Product Management | Pending |
+| PROD-02 | Phase 2: Product Management | Pending |
+| PROD-03 | Phase 2: Product Management | Pending |
+| PROD-04 | Phase 2: Product Management | Pending |
+| PROD-05 | Phase 2: Product Management | Pending |
+| PROD-06 | Phase 2: Product Management | Pending |
+| PROD-07 | Phase 2: Product Management | Pending |
+| PRICE-01 | Phase 3: Pricing Engine | Pending |
+| PRICE-02 | Phase 3: Pricing Engine | Pending |
+| PRICE-03 | Phase 3: Pricing Engine | Pending |
+| PRICE-04 | Phase 3: Pricing Engine | Pending |
+| PRICE-05 | Phase 3: Pricing Engine | Pending |
+| QUOT-01 | Phase 4: Quotations & Invoicing | Pending |
+| QUOT-02 | Phase 4: Quotations & Invoicing | Pending |
+| QUOT-03 | Phase 4: Quotations & Invoicing | Pending |
+| QUOT-04 | Phase 4: Quotations & Invoicing | Pending |
+| QUOT-05 | Phase 4: Quotations & Invoicing | Pending |
+| QUOT-06 | Phase 4: Quotations & Invoicing | Pending |
+| FACT-01 | Phase 4: Quotations & Invoicing | Pending |
+| FACT-05 | Phase 4: Quotations & Invoicing | Pending |
+| FACT-06 | Phase 4: Quotations & Invoicing | Pending |
+| FACT-07 | Phase 4: Quotations & Invoicing | Pending |
+| CONT-01 | Phase 5: Containers & Deliveries | Pending |
+| CONT-02 | Phase 5: Containers & Deliveries | Pending |
+| CONT-03 | Phase 5: Containers & Deliveries | Pending |
+| CONT-04 | Phase 5: Containers & Deliveries | Pending |
+| CONT-05 | Phase 5: Containers & Deliveries | Pending |
+| CONT-06 | Phase 5: Containers & Deliveries | Pending |
+| CONT-07 | Phase 5: Containers & Deliveries | Pending |
+| CONT-08 | Phase 5: Containers & Deliveries | Pending |
+| DELV-01 | Phase 5: Containers & Deliveries | Pending |
+| DELV-02 | Phase 5: Containers & Deliveries | Pending |
+| DELV-03 | Phase 5: Containers & Deliveries | Pending |
+| DELV-04 | Phase 5: Containers & Deliveries | Pending |
+| DASH-01 | Phase 6: Dashboard & Analytics | Pending |
+| DASH-02 | Phase 6: Dashboard & Analytics | Pending |
+| DASH-03 | Phase 6: Dashboard & Analytics | Pending |
+| DASH-04 | Phase 6: Dashboard & Analytics | Pending |
+| DASH-05 | Phase 6: Dashboard & Analytics | Pending |
+| DASH-06 | Phase 6: Dashboard & Analytics | Pending |
+| ANAL-01 | Phase 6: Dashboard & Analytics | Pending |
+| ANAL-02 | Phase 6: Dashboard & Analytics | Pending |
+| ANAL-03 | Phase 6: Dashboard & Analytics | Pending |
+| ANAL-04 | Phase 6: Dashboard & Analytics | Pending |
+| ANAL-05 | Phase 6: Dashboard & Analytics | Pending |
+| ANAL-06 | Phase 6: Dashboard & Analytics | Pending |
+| CRM-01 | Phase 7: CRM & Accounts Receivable | Pending |
+| CRM-02 | Phase 7: CRM & Accounts Receivable | Pending |
+| CRM-03 | Phase 7: CRM & Accounts Receivable | Pending |
+| CRM-04 | Phase 7: CRM & Accounts Receivable | Pending |
+| CRM-05 | Phase 7: CRM & Accounts Receivable | Pending |
+| CRM-06 | Phase 7: CRM & Accounts Receivable | Pending |
+| WIND-01 | Phase 7: CRM & Accounts Receivable | Pending |
+| WIND-02 | Phase 7: CRM & Accounts Receivable | Pending |
+| WIND-03 | Phase 7: CRM & Accounts Receivable | Pending |
+| WIND-04 | Phase 7: CRM & Accounts Receivable | Pending |
+| HR-01 | Phase 8: HR, Email Campaigns & AllTask | Pending |
+| HR-02 | Phase 8: HR, Email Campaigns & AllTask | Pending |
+| HR-03 | Phase 8: HR, Email Campaigns & AllTask | Pending |
+| EMAIL-01 | Phase 8: HR, Email Campaigns & AllTask | Pending |
+| EMAIL-02 | Phase 8: HR, Email Campaigns & AllTask | Pending |
+| EMAIL-03 | Phase 8: HR, Email Campaigns & AllTask | Pending |
+| EMAIL-04 | Phase 8: HR, Email Campaigns & AllTask | Pending |
+| TASK-01 | Phase 8: HR, Email Campaigns & AllTask | Pending |
+| TASK-02 | Phase 8: HR, Email Campaigns & AllTask | Pending |
+| TASK-03 | Phase 8: HR, Email Campaigns & AllTask | Pending |
+| AI-01 | Phase 9: AI Console, Tradewatch & Kreator | Pending |
+| AI-02 | Phase 9: AI Console, Tradewatch & Kreator | Pending |
+| AI-03 | Phase 9: AI Console, Tradewatch & Kreator | Pending |
+| TRADE-01 | Phase 9: AI Console, Tradewatch & Kreator | Pending |
+| TRADE-02 | Phase 9: AI Console, Tradewatch & Kreator | Pending |
+| KREA-01 | Phase 9: AI Console, Tradewatch & Kreator | Pending |
+| KREA-02 | Phase 9: AI Console, Tradewatch & Kreator | Pending |
 
 **Coverage:**
-- v1 requirements: 77 total (KSeF FACT-02/03/04 przeniesione do v2)
-- Mapped to phases: 77
-- Unmapped: 0 ✓
+- v1 requirements: 85 total (KSeF FACT-02/03/04 deferred to v2)
+- Mapped to phases: 85/85
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-23*
-*Last updated: 2026-03-23 after initial definition*
+*Last updated: 2026-03-23 after roadmap creation*
