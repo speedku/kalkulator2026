@@ -86,12 +86,12 @@ Plans:
   4. User can browse and filter their quotation history by date, status, and customer
   5. Admin can create VAT invoices, export them to PDF, and browse/filter the invoice history
   6. Admin can print shipping labels for orders
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
-- [ ] 04-03: TBD
+- [ ] 04-01-PLAN.md — Prisma models (Quotation, QuotationItem, Invoice, InvoiceItem), DAL, Server Actions, Zod schemas, email utility extension, next.config.ts update, DB migration SQL
+- [ ] 04-02-PLAN.md — Quotation builder UI (3-step wizard), quotation list/history page, quotation detail with PDF export, email send, and duplicate actions
+- [ ] 04-03-PLAN.md — Invoice CRUD pages, invoice PDF Route Handler, shipping labels print page
 
 ### Phase 5: Containers & Deliveries
 **Goal**: Admins can track China import containers through their full lifecycle and manage domestic deliveries; users can see a unified delivery calendar
@@ -189,7 +189,7 @@ Phases execute in numeric order: 1 > 2 > 3 > 4 > 5 > 6 > 7 > 8 > 9
 |-------|----------------|--------|-----------|
 | 1. Foundation, Auth & System Shell | 3/3 | Complete   | 2026-03-23 |
 | 2. Product Management | 3/3 | Complete   | 2026-03-23 |
-| 3. Pricing Engine | 0/2 | Not started | - |
+| 3. Pricing Engine | 2/2 | Complete   | 2026-03-23 |
 | 4. Quotations & Invoicing | 0/3 | Not started | - |
 | 5. Containers & Deliveries | 0/3 | Not started | - |
 | 6. Dashboard & Analytics | 0/3 | Not started | - |
