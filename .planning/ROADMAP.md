@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation, Auth & System Shell** - Next.js 15 infrastructure, Auth.js v5 with RBAC, Aether design tokens, XAMPP deployment, AetherShell layout, user/system management (completed 2026-03-23)
 - [x] **Phase 2: Product Management** - Full product CRUD with categories, images, Excel import, Subiekt GT sync, bulk operations -- the first feature module proving all architectural patterns (completed 2026-03-23)
-- [ ] **Phase 3: Pricing Engine** - Price list management with margin matrices, automatic price calculation, visual margin editor
+- [x] **Phase 3: Pricing Engine** - Price list management with margin matrices, automatic price calculation, visual margin editor (completed 2026-03-23)
 - [ ] **Phase 4: Quotations & Invoicing** - Quotation builder with PDF/email export, invoice creation with PDF export, label printing -- the primary revenue workflow
 - [ ] **Phase 5: Containers & Deliveries** - China import container tracking with status pipeline, domestic delivery management, delivery calendar, documents and labels
 - [ ] **Phase 6: Dashboard & Analytics** - Main dashboard with KPI cards and charts, sales analytics, paczkarnia stats, warehouse dashboard, report exports
@@ -72,8 +72,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Prisma schema extension (PriceList, PriceListMargin, User.priceListId), DAL (price-lists.ts), Server Actions, Zod schemas, TypeScript types
-- [ ] 03-02-PLAN.md — Price list admin pages (list, create, detail + margin matrix editor, clone dialog), user "my price list" view, admin user price list assignment
+- [x] 03-01-PLAN.md — Prisma schema extension (PriceList, PriceListMargin, User.priceListId), DAL (price-lists.ts), Server Actions, Zod schemas, TypeScript types (completed 2026-03-23)
+- [x] 03-02-PLAN.md — Price list admin pages (list, create, detail + margin matrix editor, clone dialog), user "my price list" view, admin user price list assignment (completed 2026-03-23)
 
 ### Phase 4: Quotations & Invoicing
 **Goal**: Users can build quotations from products and price lists, export them as PDF, send via email, and manage their quotation history; admins can create invoices and print labels

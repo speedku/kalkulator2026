@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Jeden zunifikowany system obsługujący cały cykl biznesowy ALLBAG -- z nowoczesnym Aether UI, szybki i przyjemny w codziennym użyciu
-**Current focus:** Phase 3: Pricing Engine — Plan 01 complete (Prisma models, DAL, Server Actions, Zod schemas)
+**Current focus:** Phase 3: Pricing Engine — Plans 01 and 02 complete (full pricing engine: data layer + UI)
 
 ## Current Position
 
 Phase: 3 of 9 (Pricing Engine)
-Plan: 1 of 2 in current phase (03-01 complete)
-Status: In Progress
-Last activity: 2026-03-23 - Completed plan 03-01: Pricing Engine Data Foundation (PriceList/PriceListMargin models, calculateSalePrice DAL, 6 Server Actions)
+Plan: 2 of 2 in current phase (03-01 complete, 03-02 complete)
+Status: Phase 3 Complete
+Last activity: 2026-03-23 - Completed plan 03-02: Pricing Engine UI (admin list/create/detail pages, MarginMatrixEditor, CloneDialog, /price-lists/my, PriceListAssignment)
 
-Progress: [███████░░░] 28%
+Progress: [████████░░] 33%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
+- Total plans completed: 6
 - Average duration: 10 min
-- Total execution time: 1.03 hours
+- Total execution time: 1.28 hours
 
 **By Phase:**
 
@@ -29,10 +29,10 @@ Progress: [███████░░░] 28%
 |-------|-------|-------|----------|
 | 01-foundation-auth-and-system-shell | 3/3 | 34 min | 11 min |
 | 02-product-management | 3/3 | 32 min | 11 min |
-| 03-pricing-engine | 1/2 | 3 min | 3 min |
+| 03-pricing-engine | 2/2 | 18 min | 9 min |
 
 **Recent Trend:**
-- Last 5 plans: 13 min, 8 min, 13 min, 22 min, 3 min
+- Last 5 plans: 8 min, 13 min, 22 min, 3 min, 15 min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -70,6 +70,10 @@ Recent decisions affecting current work:
 - [Phase 03-01]: getPriceLists uses requireAuth() not requireAdmin() — regular users need price list access for quotation builder (Phase 4)
 - [Phase 03-01]: ActionState redeclared locally in each actions file — avoids coupling; identical { error?: string; success?: string } shape
 - [Phase 03-01]: Prisma Decimal → number: always Number(m.marginPercent) in DAL map functions; never direct arithmetic on Decimal type
+- [Phase 03-02]: Page-scoped Zustand store: useRef + create() guard prevents state leaking between route navigations
+- [Phase 03-02]: State-toggled modal preferred over Base UI Dialog for one-off modals (simpler, same visual result)
+- [Phase 03-02]: PriceListAssignment at settings/users/[id] — actual user admin route is settings/, not admin/
+- [Phase 03-02]: getUserById DAL must include priceListId in select for assignment component to receive current value
 
 ### Pending Todos
 
@@ -94,5 +98,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 03-pricing-engine/03-01-PLAN.md (Phase 3 Plan 01 complete)
+Stopped at: Completed 03-pricing-engine/03-02-PLAN.md (Phase 3 Plan 02 complete — Phase 3 done)
 Resume file: None
