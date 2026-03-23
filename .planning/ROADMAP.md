@@ -122,12 +122,12 @@ Plans:
   3. Admin can view the sales analytics dashboard with revenue breakdowns, top products, top customers, and year-over-year / week-over-week comparisons
   4. Admin can view paczkarnia analytics (packer efficiency, queue status) and warehouse dashboard (stock levels, dead stock report, returns)
   5. Admin can export any analytics report to Excel
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 06-01: TBD
-- [ ] 06-02: TBD
-- [ ] 06-03: TBD
+- [ ] 06-01-PLAN.md — Prisma models (Notification, NotificationRead, NotificationRecipient, PackerLiveStat), DB migration SQL, dashboard DAL (getDashboardKpis, getWeeklyTrend, getActivityFeed, getUpcomingDeliveries), analytics DAL (getSalesAnalytics, getYoYComparison, getWoWComparison, getPackerStats, getDeadStock), notifications DAL + Server Actions, user settings Server Actions
+- [ ] 06-02-PLAN.md — Main dashboard page (KPI cards, Recharts trend chart, activity feed, upcoming widget), notification bell in topbar (30s polling), user account settings page (/settings/account)
+- [ ] 06-03-PLAN.md — Admin analytics pages (sales with WoW/YoY, paczkarnia, warehouse/dead stock), Excel export Route Handler (SheetJS, 4 report types)
 
 ### Phase 7: CRM & Accounts Receivable
 **Goal**: Admins can manage customer relationships through a full CRM pipeline and handle overdue payment collection through the windykacja module
