@@ -1,7 +1,8 @@
 "use client";
 
-import { useTransition, useState, useActionState } from "react";
+import { useTransition, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { toast } from "sonner";
 import { createInvoiceAction } from "@/lib/actions/invoices";
 import type { BuilderProduct } from "@/lib/dal/products";
@@ -342,12 +343,12 @@ export function InvoiceForm({ products }: Props) {
         >
           {isPending ? "Tworzenie..." : "Utwórz fakturę"}
         </button>
-        <a
+        <Link
           href="/invoices"
           className="text-sm text-gray-400 hover:text-white transition-colors"
         >
           Anuluj
-        </a>
+        </Link>
       </div>
     </form>
   );
