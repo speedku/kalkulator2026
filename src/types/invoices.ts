@@ -4,6 +4,7 @@ export interface InvoiceRow {
   customerName: string;
   customerAddress: string | null;
   customerNip: string | null;
+  notes: string | null;
   status: string;
   totalNet: number;
   totalVat: number;
