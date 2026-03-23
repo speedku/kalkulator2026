@@ -1,21 +1,31 @@
+import { getDashboardKpis, getWeeklyTrend, getActivityFeed, getUpcomingDeliveries } from "@/lib/dal/dashboard";
+import { KpiCards } from "./_components/kpi-cards";
+import { TrendChart } from "./_components/trend-chart";
+import { ActivityFeed } from "./_components/activity-feed";
+import { UpcomingWidget } from "./_components/upcoming-widget";
 import { PageHeader } from "@/components/aether/page-header";
-import { GlassCard } from "@/components/aether/glass-card";
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const [kpis, trendData, activityFeed, upcoming] = await Promise.all([
+    getDashboardKpis(),
+    getWeeklyTrend(),
+    getActivityFeed(10),
+    getUpcomingDeliveries(),
+  ]);
+
   return (
-    <div>
-      <PageHeader
-        title="Dashboard"
-        description="Witaj w Kalkulator 2026"
-      />
-
-      <GlassCard className="p-6">
-        <p className="text-aether-text-secondary">
-          Dashboard zostanie zbudowany w Phase 6. Aktualnie dostępne są podstawowe
-          funkcje systemu: zarządzanie użytkownikami, uprawnienia, kody dostępu i
-          notatnik.
-        </p>
-      </GlassCard>
+    <div className="space-y-6 p-6">
+      <PageHeader title="Dashboard" description="Przegląd kluczowych wskaźników ALLBAG" />
+      <KpiCards kpis={kpis} />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2">
+          <TrendChart data={trendData} />
+        </div>
+        <div>
+          <UpcomingWidget items={upcoming} />
+        </div>
+      </div>
+      <ActivityFeed entries={activityFeed} />
     </div>
   );
 }
