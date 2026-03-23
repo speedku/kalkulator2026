@@ -303,6 +303,7 @@ model PriceList {
   margins      PriceListMargin[]
   users        User[]
   quotations   Quotation[]
+  customers    Customer[]
 
   @@map("price_lists")
 }
@@ -378,6 +379,7 @@ model Invoice {
 
   items           InvoiceItem[]
   creator         User          @relation(fields: [createdBy], references: [id])
+  invoiceCase     WindykacjaCase?
 
   @@map("invoices")
 }
@@ -581,4 +583,121 @@ model PackerLiveStat {
 
   @@index([recordedAt])
   @@map("packer_live_stats")
+}
+
+// Phase 7: CRM models
+
+model Customer {
+  id             Int       @id @default(autoincrement())
+  name           String    @db.VarChar(255)
+  symbol         String?   @unique @db.VarChar(50)
+  email          String?   @db.VarChar(255)
+  phone          String?   @db.VarChar(50)
+  nip            String?   @db.VarChar(20)
+  address        String?   @db.Text
+  priceListId    Int?      @map("price_list_id")
+  accountManager String?   @map("account_manager") @db.VarChar(255)
+  isActive       Boolean   @default(true) @map("is_active")
+  lastContactAt  DateTime? @map("last_contact_at")
+  notes          String?   @db.Text
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+
+  priceList       PriceList?      @relation(fields: [priceListId], references: [id], onDelete: SetNull)
+  leads           Lead[]
+  deals           Deal[]
+  windykacjaCases WindykacjaCase[]
+
+  @@index([isActive])
+  @@map("customers")
+}
+
+model Lead {
+  id         Int       @id @default(autoincrement())
+  customerId Int?      @map("customer_id")
+  name       String    @db.VarChar(255)
+  email      String?   @db.VarChar(255)
+  phone      String?   @db.VarChar(50)
+  company    String?   @db.VarChar(255)
+  source     String?   @db.VarChar(100)
+  status     String    @default("new")
+  notes      String?   @db.Text
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+
+  customer Customer? @relation(fields: [customerId], references: [id], onDelete: SetNull)
+
+  @@index([status])
+  @@map("leads")
+}
+
+model Deal {
+  id         Int       @id @default(autoincrement())
+  customerId Int       @map("customer_id")
+  title      String    @db.VarChar(255)
+  stage      String    @default("prospecting")
+  value      Decimal?  @db.Decimal(12, 2)
+  notes      String?   @db.Text
+  closedAt   DateTime? @map("closed_at")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@index([stage])
+  @@map("deals")
+}
+
+model BrandWatchItem {
+  id          Int       @id @default(autoincrement())
+  url         String    @db.VarChar(500)
+  marketplace String    @db.VarChar(100)
+  productSku  String?   @map("product_sku") @db.VarChar(100)
+  notes       String?   @db.Text
+  lastChecked DateTime? @map("last_checked")
+  status      String    @default("active")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@map("brand_watch_items")
+}
+
+// Phase 7: Windykacja / AR models
+
+model WindykacjaCase {
+  id          Int       @id @default(autoincrement())
+  invoiceId   Int       @unique @map("invoice_id")
+  customerId  Int?      @map("customer_id")
+  status      String    @default("open")
+  priority    String    @default("normal")
+  notes       String?   @db.Text
+  assignedTo  Int?      @map("assigned_to")
+  resolvedAt  DateTime? @map("resolved_at")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  invoice      Invoice        @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  customer     Customer?      @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  reminderLogs ReminderLog[]
+
+  @@index([status])
+  @@map("windykacja_cases")
+}
+
+model ReminderLog {
+  id             Int      @id @default(autoincrement())
+  caseId         Int      @map("case_id")
+  level          Int
+  recipientEmail String   @map("recipient_email") @db.VarChar(255)
+  subject        String   @db.VarChar(255)
+  bodyHtml       String?  @map("body_html") @db.LongText
+  sentBy         Int?     @map("sent_by")
+  sentAt         DateTime @default(now()) @map("sent_at")
+  status         String   @default("sent")
+  errorMessage   String?  @map("error_message") @db.Text
+
+  case WindykacjaCase @relation(fields: [caseId], references: [id], onDelete: Cascade)
+
+  @@index([caseId])
+  @@map("reminder_logs")
 }
