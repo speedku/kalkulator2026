@@ -120,3 +120,16 @@ export async function bulkDeleteProductsAction(ids: number[]): Promise<ActionSta
     };
   }
 }
+
+export async function updateProductImageAction(
+  productId: number,
+  imageUrl: string
+): Promise<ActionState> {
+  try {
+    await updateProduct(productId, { imageUrl });
+    revalidatePath(`/products/${productId}`);
+    return { success: "Zdjęcie zaktualizowane" };
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : "Błąd podczas aktualizacji zdjęcia" };
+  }
+}

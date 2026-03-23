@@ -4,7 +4,6 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
 import { createProductSchema, type CreateProductFormInput } from "@/lib/validations/products";
@@ -13,6 +12,7 @@ import { GlassCard } from "@/components/aether/glass-card";
 import { GlowButton, SubmitButton } from "@/components/aether/glow-button";
 import type { ProductWithRelations, ProductCategory, ProductGroup } from "@/types/products";
 import { cn } from "@/lib/utils";
+import { ImageUploader } from "./image-uploader";
 
 interface ProductDetailFormProps {
   product: ProductWithRelations;
@@ -123,19 +123,7 @@ export function ProductDetailForm({
       {/* Image section */}
       <GlassCard title="Zdjęcie produktu">
         <div className="px-6 pb-6">
-          {product.imageUrl ? (
-            <Image
-              src={product.imageUrl}
-              alt={product.name}
-              width={200}
-              height={200}
-              className="rounded-lg object-contain bg-aether-elevated"
-            />
-          ) : (
-            <p className="text-sm text-aether-text-muted italic">
-              Zarządzanie zdjęciami dostępne po zapisaniu produktu
-            </p>
-          )}
+          <ImageUploader productId={product.id} currentImageUrl={product.imageUrl ?? null} />
         </div>
       </GlassCard>
 
