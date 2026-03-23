@@ -44,6 +44,7 @@ Recent decisions affecting current work:
 
 - [Roadmap]: 9 phases derived from 85 v1 requirements. Auth+System in Phase 1, Products before Pricing before Quotations. Containers parallel to commerce chain (depends on Phase 2 only). Dashboard after data-producing phases.
 - [Roadmap]: KSeF e-invoicing (FACT-02/03/04) deferred to v2 per REQUIREMENTS.md. FACT-01/05/06/07 (basic invoicing) stays in Phase 4.
+- [Phase quick]: GitHub repo 'kalkulator2026' created as public under account 'speedku'; master branch used (not main); gh CLI single-command approach
 
 ### Pending Todos
 
