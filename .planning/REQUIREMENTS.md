@@ -32,11 +32,11 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 
 ### Pricing (PRICE)
 
-- [ ] **PRICE-01**: Admin może tworzyć cenniki (price lists) dla różnych grup klientów
-- [ ] **PRICE-02**: Admin może ustawiać marże w macierzy cennik x grupa produktowa
-- [ ] **PRICE-03**: System automatycznie oblicza ceny sprzedaży na podstawie ceny zakupu i marży
-- [ ] **PRICE-04**: Użytkownik może przeglądać przypisany mu cennik
-- [ ] **PRICE-05**: Admin może klonować cenniki i edytować je masowo
+- [x] **PRICE-01**: Admin może tworzyć cenniki (price lists) dla różnych grup klientów
+- [x] **PRICE-02**: Admin może ustawiać marże w macierzy cennik x grupa produktowa
+- [x] **PRICE-03**: System automatycznie oblicza ceny sprzedaży na podstawie ceny zakupu i marży
+- [x] **PRICE-04**: Użytkownik może przeglądać przypisany mu cennik
+- [x] **PRICE-05**: Admin może klonować cenniki i edytować je masowo
 
 ### Quotations (QUOT)
 
@@ -206,11 +206,11 @@ Odroczone -- nie w bieżącej roadmapie.
 | PROD-05 | Phase 2: Product Management | Complete |
 | PROD-06 | Phase 2: Product Management | Complete |
 | PROD-07 | Phase 2: Product Management | Complete |
-| PRICE-01 | Phase 3: Pricing Engine | Pending |
-| PRICE-02 | Phase 3: Pricing Engine | Pending |
-| PRICE-03 | Phase 3: Pricing Engine | Pending |
-| PRICE-04 | Phase 3: Pricing Engine | Pending |
-| PRICE-05 | Phase 3: Pricing Engine | Pending |
+| PRICE-01 | Phase 3: Pricing Engine | Complete |
+| PRICE-02 | Phase 3: Pricing Engine | Complete |
+| PRICE-03 | Phase 3: Pricing Engine | Complete |
+| PRICE-04 | Phase 3: Pricing Engine | Complete |
+| PRICE-05 | Phase 3: Pricing Engine | Complete |
 | QUOT-01 | Phase 4: Quotations & Invoicing | Pending |
 | QUOT-02 | Phase 4: Quotations & Invoicing | Pending |
 | QUOT-03 | Phase 4: Quotations & Invoicing | Pending |

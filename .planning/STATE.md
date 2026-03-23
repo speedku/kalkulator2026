@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Jeden zunifikowany system obsługujący cały cykl biznesowy ALLBAG -- z nowoczesnym Aether UI, szybki i przyjemny w codziennym użyciu
-**Current focus:** Phase 2: Product Management — ALL 3 plans complete (image upload + Excel import + Subiekt GT sync delivered)
+**Current focus:** Phase 3: Pricing Engine — Plan 01 complete (Prisma models, DAL, Server Actions, Zod schemas)
 
 ## Current Position
 
-Phase: 2 of 9 (Product Management)
-Plan: 3 of 3 in current phase (02-01, 02-02, 02-03 complete)
-Status: Phase Complete
-Last activity: 2026-03-23 - Completed plan 02-03: Product Upload/Import/Sync (MinIO presigned URL, SheetJS Excel import, Subiekt GT sync)
+Phase: 3 of 9 (Pricing Engine)
+Plan: 1 of 2 in current phase (03-01 complete)
+Status: In Progress
+Last activity: 2026-03-23 - Completed plan 03-01: Pricing Engine Data Foundation (PriceList/PriceListMargin models, calculateSalePrice DAL, 6 Server Actions)
 
-Progress: [██████░░░░] 22%
+Progress: [███████░░░] 28%
 
 ## Performance Metrics
 
@@ -29,9 +29,10 @@ Progress: [██████░░░░] 22%
 |-------|-------|-------|----------|
 | 01-foundation-auth-and-system-shell | 3/3 | 34 min | 11 min |
 | 02-product-management | 3/3 | 32 min | 11 min |
+| 03-pricing-engine | 1/2 | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 13 min, 8 min, 13 min, 22 min
+- Last 5 plans: 13 min, 8 min, 13 min, 22 min, 3 min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -65,6 +66,10 @@ Recent decisions affecting current work:
 - [Phase 02-03]: Presigned URL pattern — GET Route Handler generates PutObjectCommand + getSignedUrl; client PUT directly to MinIO; Server Action saves publicUrl to DB
 - [Phase 02-03]: Server Action bridge pattern — 'use server' file wraps server-only DAL for client component consumption (same pattern as getNoteVersionsAction in Phase 01-03)
 - [Phase 02-03]: GlassCard requires explicit padding wrapper (px-6 py-6) inside — component does not auto-pad children
+- [Phase 03-01]: calculateSalePrice accepts number | { toNumber(): number } union — handles Prisma Decimal + plain number without caller-side coercion
+- [Phase 03-01]: getPriceLists uses requireAuth() not requireAdmin() — regular users need price list access for quotation builder (Phase 4)
+- [Phase 03-01]: ActionState redeclared locally in each actions file — avoids coupling; identical { error?: string; success?: string } shape
+- [Phase 03-01]: Prisma Decimal → number: always Number(m.marginPercent) in DAL map functions; never direct arithmetic on Decimal type
 
 ### Pending Todos
 
@@ -89,5 +94,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 02-product-management/02-03-PLAN.md (Phase 2 complete)
+Stopped at: Completed 03-pricing-engine/03-01-PLAN.md (Phase 3 Plan 01 complete)
 Resume file: None
