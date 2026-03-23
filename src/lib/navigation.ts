@@ -12,6 +12,10 @@ import {
   KeyRound,
   ScrollText,
   Settings,
+  Users2,
+  TrendingUp,
+  BarChart2,
+  AlertTriangle,
   type LucideIcon,
 } from "lucide-react";
 
@@ -81,6 +85,40 @@ export const sidebarItems: NavItem[] = [
     href: "/notepad",
     icon: StickyNote,
     pageId: "admin-notepad",
+  },
+  {
+    type: "separator",
+  },
+  {
+    type: "item",
+    label: "Klienci",
+    href: "/crm",
+    icon: Users2,
+    pageId: "admin-crm",
+  },
+  {
+    type: "item",
+    label: "Leady",
+    href: "/crm/leads",
+    icon: TrendingUp,
+    pageId: "admin-leads",
+  },
+  {
+    type: "item",
+    label: "Pipeline",
+    href: "/crm/pipeline",
+    icon: BarChart2,
+    pageId: "admin-pipeline",
+  },
+  {
+    type: "separator",
+  },
+  {
+    type: "item",
+    label: "Windykacja",
+    href: "/windykacja",
+    icon: AlertTriangle,
+    pageId: "admin-windykacja",
   },
   {
     type: "separator",

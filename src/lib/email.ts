@@ -175,6 +175,75 @@ export async function sendContainerStatusEmail(opts: {
   });
 }
 
+export async function sendPaymentReminderEmail(opts: {
+  to: string;
+  invoiceNumber: string;
+  customerName: string;
+  daysOverdue: number;
+  amountDue: number;
+  level: number;
+  dueAt: Date;
+}): Promise<void> {
+  const levelLabels = [
+    "",
+    "Pierwsze przypomnienie",
+    "Drugie przypomnienie",
+    "Pilne przypomnienie",
+    "Ostateczne wezwanie",
+  ];
+  const label = levelLabels[opts.level] ?? `Poziom ${opts.level}`;
+  const dueDateFormatted = opts.dueAt.toLocaleDateString("pl-PL", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  const bodyHtml = `
+    <h2 style="margin:0 0 16px;font-size:20px;font-weight:600;color:#f0f0ff;">
+      ${label} — Faktura ${opts.invoiceNumber}
+    </h2>
+    <p style="margin:0 0 16px;color:#a0a0c0;line-height:1.6;">
+      Szanowny/a ${opts.customerName},
+    </p>
+    <p style="margin:0 0 24px;color:#a0a0c0;line-height:1.6;">
+      Uprzejmie przypominamy o nieuregulowanej płatności za fakturę
+      <strong style="color:#f0f0ff;">${opts.invoiceNumber}</strong>.
+    </p>
+    <table style="width:100%;border-collapse:collapse;margin:0 0 24px;">
+      <tr>
+        <td style="padding:8px 0;color:#606080;font-size:13px;border-bottom:1px solid rgba(99,102,241,0.1);">Numer faktury</td>
+        <td style="padding:8px 0;color:#f0f0ff;font-size:13px;border-bottom:1px solid rgba(99,102,241,0.1);text-align:right;">${opts.invoiceNumber}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px 0;color:#606080;font-size:13px;border-bottom:1px solid rgba(99,102,241,0.1);">Kwota do zapłaty</td>
+        <td style="padding:8px 0;color:#f0f0ff;font-size:13px;border-bottom:1px solid rgba(99,102,241,0.1);text-align:right;"><strong>${opts.amountDue.toFixed(2)} PLN</strong></td>
+      </tr>
+      <tr>
+        <td style="padding:8px 0;color:#606080;font-size:13px;border-bottom:1px solid rgba(99,102,241,0.1);">Termin płatności</td>
+        <td style="padding:8px 0;color:#f0f0ff;font-size:13px;border-bottom:1px solid rgba(99,102,241,0.1);text-align:right;">${dueDateFormatted}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px 0;color:#606080;font-size:13px;">Dni po terminie</td>
+        <td style="padding:8px 0;color:#ef4444;font-size:13px;font-weight:600;text-align:right;">${opts.daysOverdue} dni</td>
+      </tr>
+    </table>
+    <p style="margin:0 0 24px;color:#a0a0c0;font-size:13px;line-height:1.6;">
+      Prosimy o uregulowanie należności w trybie pilnym. W razie pytań prosimy o kontakt.
+    </p>
+    <p style="margin:0;color:#606080;font-size:12px;">
+      Zespół ALLBAG
+    </p>
+  `;
+
+  const transport = createTransport();
+  await transport.sendMail({
+    from: FROM_ADDRESS,
+    to: opts.to,
+    subject: `${label} — ${opts.invoiceNumber} — ALLBAG`,
+    html: emailTemplate(label, bodyHtml),
+  });
+}
+
 export async function sendQuotationEmail(opts: {
   to: string;
   quotationNumber: string;
