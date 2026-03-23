@@ -11,11 +11,11 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 
 ### Authentication (AUTH)
 
-- [ ] **AUTH-01**: Użytkownik może się zarejestrować emailem, hasłem i kodem dostępu
+- [x] **AUTH-01**: Użytkownik może się zarejestrować emailem, hasłem i kodem dostępu
 - [x] **AUTH-02**: Użytkownik może się zalogować emailem i hasłem (sesja 7 dni)
-- [ ] **AUTH-03**: Użytkownik może zresetować hasło przez link w emailu
+- [x] **AUTH-03**: Użytkownik może zresetować hasło przez link w emailu
 - [x] **AUTH-04**: Sesja użytkownika przetrwa odświeżenie przeglądarki (JWT)
-- [ ] **AUTH-05**: Admin widzi panel admina, użytkownik widzi panel użytkownika (RBAC)
+- [x] **AUTH-05**: Admin widzi panel admina, użytkownik widzi panel użytkownika (RBAC)
 - [ ] **AUTH-06**: Admin może zarządzać uprawnieniami do poszczególnych stron
 - [x] **AUTH-07**: Po 5 nieudanych próbach logowania konto jest blokowane na 15 min
 - [ ] **AUTH-08**: Admin może tworzyć i zarządzać kodami dostępu do rejestracji
@@ -187,11 +187,11 @@ Odroczone -- nie w bieżącej roadmapie.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Phase 1: Foundation, Auth & System Shell | Pending |
+| AUTH-01 | Phase 1: Foundation, Auth & System Shell | Complete |
 | AUTH-02 | Phase 1: Foundation, Auth & System Shell | Complete |
-| AUTH-03 | Phase 1: Foundation, Auth & System Shell | Pending |
+| AUTH-03 | Phase 1: Foundation, Auth & System Shell | Complete |
 | AUTH-04 | Phase 1: Foundation, Auth & System Shell | Complete |
-| AUTH-05 | Phase 1: Foundation, Auth & System Shell | Pending |
+| AUTH-05 | Phase 1: Foundation, Auth & System Shell | Complete |
 | AUTH-06 | Phase 1: Foundation, Auth & System Shell | Pending |
 | AUTH-07 | Phase 1: Foundation, Auth & System Shell | Complete |
 | AUTH-08 | Phase 1: Foundation, Auth & System Shell | Pending |

@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 ## Current Position
 
 Phase: 1 of 9 (Foundation, Auth & System Shell)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In Progress
-Last activity: 2026-03-23 - Completed plan 01-01: Foundation Bootstrap (Next.js scaffold, Prisma schema, Auth.js v5, Aether tokens)
+Last activity: 2026-03-23 - Completed plan 01-02: Auth Pages & App Shell (login/register/forgot-reset, AetherShell sidebar+topbar, RBAC navigation)
 
-Progress: [█░░░░░░░░░] 4%
+Progress: [██░░░░░░░░] 7%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 13 min
-- Total execution time: 0.2 hours
+- Total plans completed: 2
+- Average duration: 11 min
+- Total execution time: 0.4 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation-auth-and-system-shell | 1/3 | 13 min | 13 min |
+| 01-foundation-auth-and-system-shell | 2/3 | 21 min | 11 min |
 
 **Recent Trend:**
-- Last 5 plans: 13 min
-- Trend: -
+- Last 5 plans: 13 min, 8 min
+- Trend: improving
 
 *Updated after each plan completion*
 
@@ -47,6 +47,9 @@ Recent decisions affecting current work:
 - [Phase quick]: GitHub repo 'kalkulator2026' created as public under account 'speedku'; master branch used (not main); gh CLI single-command approach
 - [Phase 01-foundation-auth-and-system-shell]: bcryptjs 3.0.3 used (vs planned 2.4.3) - backward compatible, same API; nodemailer@7 to satisfy @auth/core peer dep
 - [Phase 01-foundation-auth-and-system-shell]: Auth.js v5 split config enforced: middleware.ts -> auth.config.ts (Edge-safe) only; auth.ts -> Prisma+bcryptjs (Node.js)
+- [Phase 01-02]: @base-ui/react uses render prop (not asChild) for polymorphic components; TooltipTrigger uses render={<Link />} pattern
+- [Phase 01-02]: SidebarNav server/client split: server fetches RBAC permissions, client handles interactivity (collapse, active, mobile overlay)
+- [Phase 01-02]: Best-effort pattern for activity logging and emails — try/catch so auth flows never fail due to non-critical side effects
 
 ### Pending Todos
 
@@ -71,5 +74,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 01-foundation-auth-and-system-shell/01-01-PLAN.md
+Stopped at: Completed 01-foundation-auth-and-system-shell/01-02-PLAN.md
 Resume file: None
