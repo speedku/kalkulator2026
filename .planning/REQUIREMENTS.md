@@ -28,7 +28,7 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 - [ ] **PROD-04**: Admin może uploadować zdjęcia produktów
 - [ ] **PROD-05**: Admin może importować produkty z pliku Excel
 - [x] **PROD-06**: System może synchronizować produkty z Subiekt GT (import)
-- [ ] **PROD-07**: Admin może wykonywać operacje masowe na produktach (edycja, usunięcie)
+- [x] **PROD-07**: Admin może wykonywać operacje masowe na produktach (edycja, usunięcie)
 
 ### Pricing (PRICE)
 
@@ -205,7 +205,7 @@ Odroczone -- nie w bieżącej roadmapie.
 | PROD-04 | Phase 2: Product Management | Pending |
 | PROD-05 | Phase 2: Product Management | Pending |
 | PROD-06 | Phase 2: Product Management | Complete |
-| PROD-07 | Phase 2: Product Management | Pending |
+| PROD-07 | Phase 2: Product Management | Complete |
 | PRICE-01 | Phase 3: Pricing Engine | Pending |
 | PRICE-02 | Phase 3: Pricing Engine | Pending |
 | PRICE-03 | Phase 3: Pricing Engine | Pending |

@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Jeden zunifikowany system obsługujący cały cykl biznesowy ALLBAG -- z nowoczesnym Aether UI, szybki i przyjemny w codziennym użyciu
-**Current focus:** Phase 2: Product Management — data layer complete, UI plans pending
+**Current focus:** Phase 2: Product Management — data layer + product catalog UI complete, image upload plan pending
 
 ## Current Position
 
 Phase: 2 of 9 (Product Management)
-Plan: 1 of 3 in current phase (02-01 complete)
+Plan: 2 of 3 in current phase (02-01, 02-02 complete)
 Status: In Progress
-Last activity: 2026-03-23 - Completed plan 02-01: Product Data Layer (Prisma schema, DAL, Server Actions, MinIO, Subiekt)
+Last activity: 2026-03-23 - Completed plan 02-02: Product Catalog UI (TanStack Table list page, create/edit forms, categories page)
 
-Progress: [████░░░░░░] 14%
+Progress: [█████░░░░░] 19%
 
 ## Performance Metrics
 
@@ -28,7 +28,7 @@ Progress: [████░░░░░░] 14%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation-auth-and-system-shell | 3/3 | 34 min | 11 min |
-| 02-product-management | 1/3 | 22 min | 22 min |
+| 02-product-management | 2/3 | 28 min | 14 min |
 
 **Recent Trend:**
 - Last 5 plans: 13 min, 8 min, 13 min, 22 min
@@ -59,6 +59,9 @@ Recent decisions affecting current work:
 - [Phase 02-01]: Zod v4 uses result.error.issues (not .errors) — fixed across product actions
 - [Phase 02-01]: prisma db pull skipped (placeholder creds) — 5 product models defined manually from confirmed kalkulator2025 schema
 - [Phase 02-01]: Product soft delete pattern: isActive=false never hard delete (FK safety)
+- [Phase 02-02]: zodResolver requires z.input<Schema> (not z.infer<>) as useForm<T> generic to avoid TS errors with .default() fields
+- [Phase 02-02]: GlowButton has no asChild prop — use styled Link with matching Aether CSS classes for navigation buttons
+- [Phase 02-02]: TanStack Table URL state pattern: Server Component reads await searchParams, Client Component pushes to URL via useRouter/useSearchParams
 
 ### Pending Todos
 
@@ -83,5 +86,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 02-product-management/02-01-PLAN.md
+Stopped at: Completed 02-product-management/02-02-PLAN.md
 Resume file: None
