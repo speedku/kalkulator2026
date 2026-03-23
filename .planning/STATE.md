@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Jeden zunifikowany system obsługujący cały cykl biznesowy ALLBAG -- z nowoczesnym Aether UI, szybki i przyjemny w codziennym użyciu
-**Current focus:** Phase 5: Containers & Deliveries — Plan 01 complete (data layer: 6 Prisma models, DAL, Server Actions, email extension, navigation)
+**Current focus:** Phase 5: Containers & Deliveries — Plan 02 complete (container UI: list page, create form, detail page with ETA countdown, items editor, documents, Chinese labels, notify dialog)
 
 ## Current Position
 
 Phase: 5 of 9 (Containers & Deliveries)
-Plan: 1 of 3 in current phase (05-01 complete — Wave 1 data layer done)
+Plan: 2 of 3 in current phase (05-02 complete — Wave 2 container UI done)
 Status: In Progress
-Last activity: 2026-03-23 - Completed plan 05-01: Containers & Deliveries data layer (6 Prisma models, SQL migration, 13 DAL functions, 8 Server Actions, sendContainerStatusEmail, navigation entries)
+Last activity: 2026-03-23 - Completed plan 05-02: Container UI (12 files: list/create/detail pages, items editor, documents upload, Chinese thermal labels, ETA countdown, notify dialog)
 
-Progress: [████████████] 50% (Phase 5 Plan 1 of 9 complete — 11/22 plans done)
+Progress: [█████████████] 54% (Phase 5 Plan 2 of 9 complete — 12/22 plans done)
 
 ## Performance Metrics
 
@@ -31,7 +31,7 @@ Progress: [████████████] 50% (Phase 5 Plan 1 of 9 comple
 | 02-product-management | 3/3 | 32 min | 11 min |
 | 03-pricing-engine | 2/2 | 18 min | 9 min |
 | 04-quotations-and-invoicing | 3/3 | 20 min | 7 min |
-| 05-containers-and-deliveries | 1/3 | 4 min | 4 min |
+| 05-containers-and-deliveries | 2/3 | 13 min | 6.5 min |
 
 **Recent Trend:**
 - Last 5 plans: 8 min, 13 min, 22 min, 3 min, 15 min
@@ -89,6 +89,9 @@ Recent decisions affecting current work:
 - [Phase 05-01]: ContainerItem.totalPrice computed in DAL (quantity * unitPrice) — NOT a Prisma model field; avoids MySQL GENERATED ALWAYS AS write conflict
 - [Phase 05-01]: getCalendarDeliveries uses requireAuth not requireAdmin — all logged-in users can see the delivery calendar (DELV-03)
 - [Phase 05-01]: ContainerDocumentSchema filePath uses z.string().max(500) not z.string().url() — MinIO presigned URLs may not pass strict URL validation
+- [Phase 05-02]: Container create form has no items section — items added post-creation on detail page (cleaner UX, avoids complex nested form state)
+- [Phase 05-02]: useEtaCountdown inline in container-detail.tsx as local function — single-use hook, no reuse needed
+- [Phase 05-02]: Upload route returns documentType+originalFilename+storedFilename so client can pass to addContainerDocumentAction directly without reparsing
 
 ### Pending Todos
 
@@ -113,5 +116,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 05-containers-and-deliveries/05-01-PLAN.md (Phase 5 Wave 1 data layer — 6 models, 13 DAL functions, 8 Server Actions)
+Stopped at: Completed 05-containers-and-deliveries/05-02-PLAN.md (Phase 5 Wave 2 container UI — 12 files, list/create/detail pages, ETA countdown, labels, documents)
 Resume file: None
