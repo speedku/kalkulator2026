@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Jeden zunifikowany system obsługujący cały cykl biznesowy ALLBAG -- z nowoczesnym Aether UI, szybki i przyjemny w codziennym użyciu
-**Current focus:** Phase 6: Dashboard & Analytics — IN PROGRESS (Plan 2 of 3 done: main dashboard UI, KPI cards, trend chart, activity feed, notification bell, account settings)
+**Current focus:** Phase 6: Dashboard & Analytics — COMPLETE (all 3 plans done: data layer, dashboard UI, analytics pages + Excel export)
 
 ## Current Position
 
-Phase: 6 of 9 (Dashboard & Analytics) — In Progress
-Plan: 2 of 3 in current phase (06-02 complete — main dashboard UI, 5 KPI cards, Recharts AreaChart, activity feed, upcoming widget, notification bell in topbar, account settings page)
-Status: Ready for 06-03 (analytics + notifications UI)
-Last activity: 2026-03-23 - Completed plan 06-02: Dashboard UI (8 new files: page.tsx, 5 dashboard components, account settings page + form)
+Phase: 6 of 9 (Dashboard & Analytics) — Complete
+Plan: 3 of 3 in current phase (06-03 complete — analytics pages: /analytics, /analytics/paczkarnia, /analytics/warehouse + Excel export)
+Status: Phase 6 complete — ready for Phase 7
+Last activity: 2026-03-23 - Completed plan 06-03: Analytics pages & Excel export (9 new files: 3 pages, 5 chart/table components, export route)
 
-Progress: [█████████████████] 68% (Phase 6 Plan 2 of 9 — 15/22 plans done)
+Progress: [██████████████████] 72% (Phase 6 Plan 3 of 9 — 16/22 plans done)
 
 ## Performance Metrics
 
@@ -39,6 +39,7 @@ Progress: [█████████████████] 68% (Phase 6 Pla
 - Trend: stable
 
 *Updated after each plan completion*
+| Phase 06-dashboard-and-analytics P03 | 3min | 2 tasks | 9 files |
 
 ## Accumulated Context
 
@@ -103,6 +104,9 @@ Recent decisions affecting current work:
 - [Phase 06-02]: NotificationBell in (dashboard)/_components not aether/ — depends on /kalkulator2026 basePath, not a reusable design system component
 - [Phase 06-02]: TrendChart uses own styled div not GlassCard — needs direct p-5 control and avoids Framer Motion double-border
 - [Phase 06-02]: Dashboard data flow: Server Component Promise.all → typed props → client components (no prop drilling issues, no context needed)
+- [Phase 06-03]: SheetJS require() import — xlsx 0.20.3 CommonJS module; ESM import * as causes TS resolution issues; require() cast avoids cleanly
+- [Phase 06-03]: Buffer.from(XLSX.write()) wrapping — XLSX.write returns Buffer<ArrayBufferLike> not assignable to BodyInit; Buffer.from() fixes (same pattern as Phase 04-02 react-pdf)
+- [Phase 06-03]: YoY pivot in client — server passes YoYRow[] (year+month rows), client pivots to 12-point array with year-columns for Recharts multi-line
 
 ### Pending Todos
 
@@ -127,5 +131,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 06-dashboard-and-analytics/06-02-PLAN.md (Phase 6 Plan 2 — dashboard UI: 5 KPI cards, Recharts chart, activity feed, upcoming widget, notification bell, account settings)
+Stopped at: Completed 06-dashboard-and-analytics/06-03-PLAN.md (Phase 6 Plan 3 — analytics pages: /analytics BarChart+YoY, /analytics/paczkarnia, /analytics/warehouse KPI+dead-stock, Excel export route)
 Resume file: None
