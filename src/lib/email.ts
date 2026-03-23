@@ -114,3 +114,36 @@ export async function sendVerificationEmail(
     html: emailTemplate("Potwierdzenie email", bodyHtml),
   });
 }
+
+export async function sendQuotationEmail(opts: {
+  to: string;
+  quotationNumber: string;
+  customerName: string;
+  pdfBuffer: Buffer;
+  pdfFilename: string;
+}): Promise<void> {
+  const bodyHtml = `
+    <h2 style="margin:0 0 16px;font-size:20px;font-weight:600;color:#f0f0ff;">Wycena ${opts.quotationNumber}</h2>
+    <p style="margin:0 0 24px;color:#a0a0c0;line-height:1.6;">
+      Szanowny/a ${opts.customerName},<br>
+      w załączeniu przesyłamy wycenę nr <strong style="color:#f0f0ff;">${opts.quotationNumber}</strong>.
+    </p>
+    <p style="margin:0;color:#606080;font-size:13px;">
+      W razie pytań prosimy o kontakt — zespół ALLBAG.
+    </p>
+  `;
+  const transport = createTransport();
+  await transport.sendMail({
+    from: FROM_ADDRESS,
+    to: opts.to,
+    subject: `Wycena ${opts.quotationNumber} — ALLBAG`,
+    html: emailTemplate(`Wycena ${opts.quotationNumber}`, bodyHtml),
+    attachments: [
+      {
+        filename: opts.pdfFilename,
+        content: opts.pdfBuffer,
+        contentType: "application/pdf",
+      },
+    ],
+  });
+}
