@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Jeden zunifikowany system obsługujący cały cykl biznesowy ALLBAG -- z nowoczesnym Aether UI, szybki i przyjemny w codziennym użyciu
-**Current focus:** Phase 4: Quotations & Invoicing — Plan 01 complete (data layer: Prisma models, DAL, Actions, email)
+**Current focus:** Phase 4: Quotations & Invoicing — Plan 02 complete (quotation UI: wizard builder, list, detail, PDF, email)
 
 ## Current Position
 
 Phase: 4 of 9 (Quotations & Invoicing)
-Plan: 1 of 3 in current phase (04-01 complete)
+Plan: 2 of 3 in current phase (04-02 complete)
 Status: In Progress
-Last activity: 2026-03-23 - Completed plan 04-01: Quotations & Invoicing data layer (Prisma models, DAL, Server Actions, email extension, @react-pdf/renderer)
+Last activity: 2026-03-23 - Completed plan 04-02: Quotation UI (3-step wizard, list page, detail page, PDF export, email, duplicate)
 
-Progress: [█████████░] 37%
+Progress: [█████████░] 40%
 
 ## Performance Metrics
 
@@ -30,7 +30,7 @@ Progress: [█████████░] 37%
 | 01-foundation-auth-and-system-shell | 3/3 | 34 min | 11 min |
 | 02-product-management | 3/3 | 32 min | 11 min |
 | 03-pricing-engine | 2/2 | 18 min | 9 min |
-| 04-quotations-and-invoicing | 1/3 | 5 min | 5 min |
+| 04-quotations-and-invoicing | 2/3 | 12 min | 6 min |
 
 **Recent Trend:**
 - Last 5 plans: 8 min, 13 min, 22 min, 3 min, 15 min
@@ -78,6 +78,10 @@ Recent decisions affecting current work:
 - [Phase 04-01]: WYC/FAK atomic numbering: INSERT PENDING → get AUTO_INCREMENT id → compute number → UPDATE in same $transaction (replaces unsafe COUNT(*)+1 from kalkulator2025)
 - [Phase 04-01]: 04-DB-MIGRATION.sql creates only invoices tables (quotations/quotation_items already in production MySQL)
 - [Phase 04-01]: QuotationPdfTemplate placeholder in src/lib/pdf/ unblocks TypeScript — full impl deferred to Plan 04-02
+- [Phase 04-02]: @ts-nocheck on PDF template resolves JSX pragma + react-pdf type conflicts cleanly
+- [Phase 04-02]: Buffer.from(buffer) wrapping in Route Handler — renderToBuffer returns Buffer<ArrayBufferLike>, not assignable to BodyInit directly
+- [Phase 04-02]: getProductsForBuilder() added to products DAL — maps price field to purchasePrice alias, no pagination needed for wizard
+- [Phase 04-02]: calcSalePrice inlined in StepProducts — cannot import server-only DAL in client components
 
 ### Pending Todos
 
@@ -102,5 +106,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 04-quotations-and-invoicing/04-01-PLAN.md (Phase 4 Plan 01 complete — data layer done)
+Stopped at: Completed 04-quotations-and-invoicing/04-02-PLAN.md (Phase 4 Plan 02 complete — quotation UI done)
 Resume file: None

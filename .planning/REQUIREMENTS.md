@@ -42,7 +42,7 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 
 - [x] **QUOT-01**: Użytkownik może tworzyć wyceny z produktami i cenami z cennika
 - [x] **QUOT-02**: Wyceny mają unikalną numerację WYC-YYYY-#####
-- [ ] **QUOT-03**: Użytkownik może eksportować wycenę do PDF
+- [x] **QUOT-03**: Użytkownik może eksportować wycenę do PDF
 - [x] **QUOT-04**: Użytkownik może wysłać wycenę emailem do klienta
 - [x] **QUOT-05**: Użytkownik może przeglądać historię wycen z filtrowaniem
 - [x] **QUOT-06**: Użytkownik może duplikować istniejącą wycenę
@@ -213,7 +213,7 @@ Odroczone -- nie w bieżącej roadmapie.
 | PRICE-05 | Phase 3: Pricing Engine | Complete |
 | QUOT-01 | Phase 4: Quotations & Invoicing | Complete |
 | QUOT-02 | Phase 4: Quotations & Invoicing | Complete |
-| QUOT-03 | Phase 4: Quotations & Invoicing | Pending |
+| QUOT-03 | Phase 4: Quotations & Invoicing | Complete |
 | QUOT-04 | Phase 4: Quotations & Invoicing | Complete |
 | QUOT-05 | Phase 4: Quotations & Invoicing | Complete |
 | QUOT-06 | Phase 4: Quotations & Invoicing | Complete |
