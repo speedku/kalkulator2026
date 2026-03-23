@@ -22,12 +22,12 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 
 ### Products (PROD)
 
-- [ ] **PROD-01**: Użytkownik może przeglądać listę produktów z wyszukiwaniem i filtrami
-- [ ] **PROD-02**: Admin może tworzyć, edytować i usuwać produkty (nazwa, SKU, opis, cena zakupu)
-- [ ] **PROD-03**: Admin może przypisywać produkty do kategorii/grup produktowych
+- [x] **PROD-01**: Użytkownik może przeglądać listę produktów z wyszukiwaniem i filtrami
+- [x] **PROD-02**: Admin może tworzyć, edytować i usuwać produkty (nazwa, SKU, opis, cena zakupu)
+- [x] **PROD-03**: Admin może przypisywać produkty do kategorii/grup produktowych
 - [ ] **PROD-04**: Admin może uploadować zdjęcia produktów
 - [ ] **PROD-05**: Admin może importować produkty z pliku Excel
-- [ ] **PROD-06**: System może synchronizować produkty z Subiekt GT (import)
+- [x] **PROD-06**: System może synchronizować produkty z Subiekt GT (import)
 - [ ] **PROD-07**: Admin może wykonywać operacje masowe na produktach (edycja, usunięcie)
 
 ### Pricing (PRICE)
@@ -199,12 +199,12 @@ Odroczone -- nie w bieżącej roadmapie.
 | SYST-02 | Phase 1: Foundation, Auth & System Shell | Complete |
 | SYST-03 | Phase 1: Foundation, Auth & System Shell | Complete |
 | SYST-04 | Phase 1: Foundation, Auth & System Shell | Complete |
-| PROD-01 | Phase 2: Product Management | Pending |
-| PROD-02 | Phase 2: Product Management | Pending |
-| PROD-03 | Phase 2: Product Management | Pending |
+| PROD-01 | Phase 2: Product Management | Complete |
+| PROD-02 | Phase 2: Product Management | Complete |
+| PROD-03 | Phase 2: Product Management | Complete |
 | PROD-04 | Phase 2: Product Management | Pending |
 | PROD-05 | Phase 2: Product Management | Pending |
-| PROD-06 | Phase 2: Product Management | Pending |
+| PROD-06 | Phase 2: Product Management | Complete |
 | PROD-07 | Phase 2: Product Management | Pending |
 | PRICE-01 | Phase 3: Pricing Engine | Pending |
 | PRICE-02 | Phase 3: Pricing Engine | Pending |

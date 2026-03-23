@@ -56,7 +56,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Prisma schema extension (db pull + 5 product models), MinIO S3Client singleton, Subiekt GT MSSQL singleton, product DAL + Server Actions + Zod schemas
+- [x] 02-01-PLAN.md — Prisma schema extension (db pull + 5 product models), MinIO S3Client singleton, Subiekt GT MSSQL singleton, product DAL + Server Actions + Zod schemas (completed 2026-03-23)
 - [ ] 02-02-PLAN.md — Product list page (TanStack Table + URL-state pagination/search/filters + row selection), product create/edit forms, categories/groups management
 - [ ] 02-03-PLAN.md — Image upload (MinIO presigned PUT URLs), Excel import (SheetJS Route Handler), Subiekt GT sync page, bulk operations completion
 
