@@ -85,6 +85,7 @@ export async function getUserById(id: number) {
       emailVerified: true,
       createdAt: true,
       lastLogin: true,
+      priceListId: true,
       permissions: {
         select: {
           pageId: true,
