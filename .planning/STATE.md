@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Jeden zunifikowany system obsługujący cały cykl biznesowy ALLBAG -- z nowoczesnym Aether UI, szybki i przyjemny w codziennym użyciu
-**Current focus:** Phase 7: CRM & Accounts Receivable — Plan 2 complete (CRM UI: 16 files across customer list/create/edit/detail, leads management, pipeline board, brand protection watchlist)
+**Current focus:** Phase 7: CRM & Accounts Receivable — COMPLETE (Plan 3 complete: Windykacja UI + B2B portal — 11 files)
 
 ## Current Position
 
-Phase: 7 of 9 (CRM & Accounts Receivable) — In Progress
-Plan: 2 of 3 in current phase (07-02 complete — CRM UI: customer list/create/edit/detail, leads, pipeline, brand protection)
-Status: Plan 07-02 complete — ready for Plan 07-03 (Windykacja UI + B2B portal)
-Last activity: 2026-03-23 - Completed plan 07-02: CRM UI (16 files: customer list/create/edit/detail, leads management, pipeline board, brand protection watchlist)
+Phase: 7 of 9 (CRM & Accounts Receivable) — Complete
+Plan: 3 of 3 in current phase (07-03 complete — Windykacja UI + B2B portal: 11 files)
+Status: Phase 7 complete — ready for Phase 8
+Last activity: 2026-03-23 - Completed plan 07-03: Windykacja UI + B2B portal (11 files: aging dashboard, case detail, PDF route handler, B2B layout, B2B price list page)
 
-Progress: [████████████████████] 81% (Phase 7 Plan 2 of 9 — 18/22 plans done)
+Progress: [█████████████████████] 86% (Phase 7 Plan 3 of 9 — 19/22 plans done)
 
 ## Performance Metrics
 
@@ -33,7 +33,7 @@ Progress: [████████████████████] 81% (Ph
 | 04-quotations-and-invoicing | 3/3 | 20 min | 7 min |
 | 05-containers-and-deliveries | 3/3 | 20 min | 6.7 min |
 | 06-dashboard-and-analytics | 3/3 | 21 min | 7 min |
-| 07-crm-and-accounts-receivable | 2/3 | 14 min | 7 min |
+| 07-crm-and-accounts-receivable | 3/3 | 21 min | 7 min |
 
 **Recent Trend:**
 - Last 5 plans: 8 min, 13 min, 22 min, 3 min, 15 min
@@ -43,6 +43,7 @@ Progress: [████████████████████] 81% (Ph
 | Phase 06-dashboard-and-analytics P03 | 3min | 2 tasks | 9 files |
 | Phase 07-crm-and-accounts-receivable P01 | 7min | 2 tasks | 10 files |
 | Phase 07-crm-and-accounts-receivable P02 | 7min | 2 tasks | 16 files |
+| Phase 07-crm-and-accounts-receivable P03 | 7min | 2 tasks | 11 files |
 
 ## Accumulated Context
 
@@ -117,6 +118,9 @@ Recent decisions affecting current work:
 - [Phase 07-02]: Server Component + Client Content wrapper split: page.tsx = requireAdmin + data fetch; *-content.tsx = useState for modals — avoids "useState in Server Component" errors
 - [Phase 07-02]: z.input enum defaultValues cast: enum fields from DB need "as const enum type" cast for useForm defaultValues with z.input<Schema>
 - [Phase 07-02]: Pipeline board uses useTransition + updateDealAction + router.refresh() for stage changes (no drag-and-drop per RESEARCH.md)
+- [Phase 07-03]: B2B layout omits html/body — root layout.tsx provides them; nested html/body causes invalid HTML in Next.js App Router
+- [Phase 07-03]: CaseDetailActions extracted as separate client component — case detail page is Server Component; status update needs useState+useTransition client boundary
+- [Phase 07-03]: getUserPriceList(userId) used for B2B portal (requireAuth); getPriceListById is admin-only — getUserPriceList already built in Phase 07-01
 
 ### Pending Todos
 
@@ -141,5 +145,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 07-crm-and-accounts-receivable/07-02-PLAN.md (Phase 7 Plan 2 — CRM UI: customer list/create/edit/detail, leads, pipeline board, brand protection watchlist)
+Stopped at: Completed 07-crm-and-accounts-receivable/07-03-PLAN.md (Phase 7 Plan 3 — Windykacja UI + B2B portal — Phase 7 COMPLETE)
 Resume file: None
