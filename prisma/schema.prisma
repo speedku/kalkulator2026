@@ -1,0 +1,183 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                       Int       @id @default(autoincrement())
+  email                    String    @unique
+  passwordHash             String    @map("password_hash")
+  name                     String?
+  role                     String    @default("user") // enum: admin, user
+  accessCodeId             Int?      @map("access_code_id")
+  isActive                 Boolean   @default(true) @map("is_active")
+  emailVerified            Boolean   @default(false) @map("email_verified")
+  verificationToken        String?   @map("verification_token")
+  verificationTokenExpires DateTime? @map("verification_token_expires")
+  createdAt                DateTime  @default(now()) @map("created_at")
+  updatedAt                DateTime  @updatedAt @map("updated_at")
+  lastLogin                DateTime? @map("last_login")
+  failedLoginAttempts      Int       @default(0) @map("failed_login_attempts")
+  lockedUntil              DateTime? @map("locked_until")
+  resetToken               String?   @map("reset_token")
+  resetTokenExpires        DateTime? @map("reset_token_expires")
+
+  // Relations
+  accessCode         AccessCode?              @relation(fields: [accessCodeId], references: [id])
+  permissions        UserPermission[]
+  activityLogs       ActivityLog[]
+  notes              UserNote[]
+  permissionsHistory UserPermissionsHistory[] @relation("changed_user")
+
+  @@map("users")
+}
+
+model AccessCode {
+  id          Int       @id @default(autoincrement())
+  code        String    @unique
+  description String?
+  isActive    Boolean   @default(true) @map("is_active")
+  maxUses     Int       @default(1) @map("max_uses")
+  currentUses Int       @default(0) @map("current_uses")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  expiresAt   DateTime? @map("expires_at")
+  createdBy   Int?      @map("created_by")
+
+  users User[]
+
+  @@map("access_codes")
+}
+
+model UserPermission {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  pageId    String   @map("page_id")
+  canAccess Boolean  @default(false) @map("can_access")
+  canSee    Boolean  @default(true) @map("can_see")
+  grantedAt DateTime @default(now()) @map("granted_at")
+  grantedBy Int?     @map("granted_by")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, pageId], name: "userId_pageId")
+  @@map("user_permissions")
+}
+
+model UserPermissionsHistory {
+  id             Int      @id @default(autoincrement())
+  userId         Int      @map("user_id")
+  pageId         String   @map("page_id")
+  canAccess      Boolean  @map("can_access")
+  canSee         Boolean? @map("can_see")
+  changedBy      Int      @map("changed_by")
+  changedByEmail String   @map("changed_by_email")
+  action         String   // enum: granted, revoked
+  changedAt      DateTime @default(now()) @map("changed_at")
+  ipAddress      String?  @map("ip_address")
+  userAgent      String?  @map("user_agent")
+  sessionId      String?  @map("session_id")
+
+  user User @relation("changed_user", fields: [userId], references: [id])
+
+  @@map("user_permissions_history")
+}
+
+model ActivityLog {
+  id           Int      @id @default(autoincrement())
+  userId       Int?     @map("user_id")
+  activityType String   @map("activity_type") // enum: product,container,sync,delivery,auth,system,quotation,user
+  action       String   // enum: create,update,delete,login,logout,complete,error,view,export,import
+  entityType   String?  @map("entity_type")
+  entityId     Int?     @map("entity_id")
+  entityName   String?  @map("entity_name")
+  description  String
+  metadata     String?  // JSON string
+  ipAddress    String?  @map("ip_address")
+  userAgent    String?  @map("user_agent")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("activity_log")
+}
+
+model UserNote {
+  id             Int      @id @default(autoincrement())
+  userId         Int      @unique @map("user_id")
+  content        String?  @db.LongText
+  contentPlain   String?  @map("content_plain") @db.Text
+  tags           String?  @db.LongText // JSON
+  wordCount      Int      @default(0) @map("word_count")
+  characterCount Int      @default(0) @map("character_count")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  user     User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  versions UserNoteVersion[]
+
+  @@map("user_notes")
+}
+
+model UserNoteVersion {
+  id             Int      @id @default(autoincrement())
+  noteId         Int      @map("note_id")
+  userId         Int      @map("user_id")
+  content        String   @db.LongText
+  contentPlain   String?  @map("content_plain") @db.Text
+  tags           String?  @db.LongText // JSON
+  wordCount      Int      @default(0) @map("word_count")
+  characterCount Int      @default(0) @map("character_count")
+  versionNumber  Int      @map("version_number")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  note UserNote @relation(fields: [noteId], references: [id], onDelete: Cascade)
+
+  @@map("user_note_versions")
+}
+
+model LoginLog {
+  id              Int       @id @default(autoincrement())
+  userId          Int?      @map("user_id")
+  email           String
+  loginStatus     String    @map("login_status") // enum: success, failed, locked
+  ipAddress       String?   @map("ip_address")
+  userAgent       String?   @map("user_agent") @db.Text
+  sessionId       String?   @map("session_id")
+  loginAt         DateTime  @default(now()) @map("login_at")
+  logoutAt        DateTime? @map("logout_at")
+  durationSeconds Int?      @map("duration_seconds")
+  failedReason    String?   @map("failed_reason")
+
+  @@map("login_logs")
+}
+
+model UserWidgetPermission {
+  id                 Int      @id @default(autoincrement())
+  userId             Int      @unique @map("user_id")
+  widgetPacker       Boolean  @default(true) @map("widget_packer")
+  widgetSales        Boolean  @default(false) @map("widget_sales")
+  widgetOrders       Boolean  @default(false) @map("widget_orders")
+  widgetPackingQueue Boolean  @default(true) @map("widget_packing_queue")
+  widgetEfficiency   Boolean  @default(false) @map("widget_efficiency")
+  widgetSystemStatus Boolean  @default(false) @map("widget_system_status")
+  grantedBy          Int?     @map("granted_by")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+
+  @@map("user_widget_permissions")
+}
+
+model UserNoteTag {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")
+  tagName    String   @map("tag_name")
+  usageCount Int      @default(1) @map("usage_count")
+  lastUsedAt DateTime @updatedAt @map("last_used_at")
+
+  @@unique([userId, tagName], name: "idx_user_tag")
+  @@map("user_note_tags")
+}
