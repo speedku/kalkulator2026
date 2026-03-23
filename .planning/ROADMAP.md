@@ -53,11 +53,12 @@ Plans:
   3. Admin can upload product images (stored in MinIO) and see them displayed in the product detail view
   4. Admin can import products from an Excel file and see them appear in the product list
   5. Admin can sync products from Subiekt GT and perform bulk edit/delete operations on selected products
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
+- [ ] 02-01-PLAN.md — Prisma schema extension (db pull + 5 product models), MinIO S3Client singleton, Subiekt GT MSSQL singleton, product DAL + Server Actions + Zod schemas
+- [ ] 02-02-PLAN.md — Product list page (TanStack Table + URL-state pagination/search/filters + row selection), product create/edit forms, categories/groups management
+- [ ] 02-03-PLAN.md — Image upload (MinIO presigned PUT URLs), Excel import (SheetJS Route Handler), Subiekt GT sync page, bulk operations completion
 
 ### Phase 3: Pricing Engine
 **Goal**: Admins can configure price lists with margin matrices so that the system automatically calculates sale prices; users can view their assigned price list
@@ -187,7 +188,7 @@ Phases execute in numeric order: 1 > 2 > 3 > 4 > 5 > 6 > 7 > 8 > 9
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation, Auth & System Shell | 3/3 | Complete   | 2026-03-23 |
-| 2. Product Management | 0/2 | Not started | - |
+| 2. Product Management | 0/3 | Not started | - |
 | 3. Pricing Engine | 0/2 | Not started | - |
 | 4. Quotations & Invoicing | 0/3 | Not started | - |
 | 5. Containers & Deliveries | 0/3 | Not started | - |
