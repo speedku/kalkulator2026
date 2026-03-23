@@ -88,7 +88,7 @@ Wszystkie wymagania odpowiadają funkcjonalnościom z kalkulator2025, uzupełnio
 - [x] **FACT-01**: Admin może tworzyć faktury VAT
 - [x] **FACT-05**: Admin może eksportować faktury do PDF
 - [x] **FACT-06**: Admin może przeglądać historię faktur z filtrowaniem
-- [ ] **FACT-07**: System obsługuje etykiety (label printing) dla zamówień
+- [x] **FACT-07**: System obsługuje etykiety (label printing) dla zamówień
 
 ### Windykacja / AR (WIND)
 
@@ -220,7 +220,7 @@ Odroczone -- nie w bieżącej roadmapie.
 | FACT-01 | Phase 4: Quotations & Invoicing | Complete |
 | FACT-05 | Phase 4: Quotations & Invoicing | Complete |
 | FACT-06 | Phase 4: Quotations & Invoicing | Complete |
-| FACT-07 | Phase 4: Quotations & Invoicing | Pending |
+| FACT-07 | Phase 4: Quotations & Invoicing | Complete |
 | CONT-01 | Phase 5: Containers & Deliveries | Pending |
 | CONT-02 | Phase 5: Containers & Deliveries | Pending |
 | CONT-03 | Phase 5: Containers & Deliveries | Pending |

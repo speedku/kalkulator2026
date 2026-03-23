@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Jeden zunifikowany system obsługujący cały cykl biznesowy ALLBAG -- z nowoczesnym Aether UI, szybki i przyjemny w codziennym użyciu
-**Current focus:** Phase 4: Quotations & Invoicing — Plan 02 complete (quotation UI: wizard builder, list, detail, PDF, email)
+**Current focus:** Phase 4: Quotations & Invoicing — COMPLETE (all 3 plans done: data layer, quotation UI, invoice UI + labels)
 
 ## Current Position
 
 Phase: 4 of 9 (Quotations & Invoicing)
-Plan: 2 of 3 in current phase (04-02 complete)
-Status: In Progress
-Last activity: 2026-03-23 - Completed plan 04-02: Quotation UI (3-step wizard, list page, detail page, PDF export, email, duplicate)
+Plan: 3 of 3 in current phase (04-03 complete — PHASE COMPLETE)
+Status: Phase 4 Complete
+Last activity: 2026-03-23 - Completed plan 04-03: Invoice UI + Shipping Labels (invoice list/create/detail, PDF export, labels print page)
 
-Progress: [█████████░] 40%
+Progress: [██████████] 44% (Phase 4 of 9 complete)
 
 ## Performance Metrics
 
@@ -30,7 +30,7 @@ Progress: [█████████░] 40%
 | 01-foundation-auth-and-system-shell | 3/3 | 34 min | 11 min |
 | 02-product-management | 3/3 | 32 min | 11 min |
 | 03-pricing-engine | 2/2 | 18 min | 9 min |
-| 04-quotations-and-invoicing | 2/3 | 12 min | 6 min |
+| 04-quotations-and-invoicing | 3/3 | 20 min | 7 min |
 
 **Recent Trend:**
 - Last 5 plans: 8 min, 13 min, 22 min, 3 min, 15 min
@@ -82,6 +82,9 @@ Recent decisions affecting current work:
 - [Phase 04-02]: Buffer.from(buffer) wrapping in Route Handler — renderToBuffer returns Buffer<ArrayBufferLike>, not assignable to BodyInit directly
 - [Phase 04-02]: getProductsForBuilder() added to products DAL — maps price field to purchasePrice alias, no pagination needed for wizard
 - [Phase 04-02]: calcSalePrice inlined in StepProducts — cannot import server-only DAL in client components
+- [Phase 04-03]: @ts-nocheck not needed in .tsx PDF templates — TypeScript handles react-pdf JSX without pragma (Plan 02 decision corrected)
+- [Phase 04-03]: Labels page split: Server Component shell for requireAdmin() + Client Component for window.print() APIs
+- [Phase 04-03]: Invoice form uses local React state for line items (not Zustand) — single-page form, no wizard needed
 
 ### Pending Todos
 
@@ -106,5 +109,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-23
-Stopped at: Completed 04-quotations-and-invoicing/04-02-PLAN.md (Phase 4 Plan 02 complete — quotation UI done)
+Stopped at: Completed 04-quotations-and-invoicing/04-03-PLAN.md (Phase 4 complete — invoice UI + labels done)
 Resume file: None
