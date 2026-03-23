@@ -1,12 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { saveNote } from "@/lib/dal/notepad";
+import { saveNote, getNoteVersions } from "@/lib/dal/notepad";
 
 export type ActionState = {
   success?: boolean;
   error?: string;
 };
+
+export async function getNoteVersionsAction(page = 1, perPage = 20) {
+  return getNoteVersions(page, perPage);
+}
 
 export async function saveNoteAction(
   _prevState: ActionState,
